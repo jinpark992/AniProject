@@ -1,0 +1,152 @@
+body {
+    background-color: #F5F6F7;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.5em;
+    margin: 0;
+}
+.write-form {
+width: 800px;
+margin: auto;
+padding: 20px;
+}
+
+.button-wrapper {
+display: flex;
+justify-content: flex-end;
+margin-bottom: 10px;
+}
+
+.photo-label,
+.write-button {
+background-color: rgb(212, 149, 72);
+color: black;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+margin-left: 10px;
+}
+
+.photo-input {
+opacity: 0;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+cursor: pointer;
+}
+
+.write-button {
+display: block;
+background-color: rgb(212, 149, 72);
+color: black;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+margin-top: 10px;
+}
+
+.write-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+.write-form input[type="text"],
+.write-form select,
+.write-form textarea {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #dadada;
+    margin-bottom: 10px;
+}
+.write-form textarea {
+    height: 200px;
+}
+.write-form input[type="file"] {
+    margin-bottom: 10px;
+}
+.write-form input[type="submit"] {
+    background-color: rgb(212, 149, 72);
+    color: black;
+    padding: 10px 20px;
+}
+
+.write-form input[type="file"] {
+background-color: rgb(212, 149, 72);
+color: black;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+}
+
+
+nav {
+padding: 2rem;
+position:fixed;
+}
+.first-img {
+width: 100vw;
+}
+.btn-outline-success {
+color: chocolate;
+border-color: chocolate;
+}
+.btn-outline-success:hover {
+background-color: chocolate;
+color: white;
+border-color: chocolate;
+}
+.card:hover {
+transform: scale(1.05);
+transition: 0.5s ease-in-out;
+}
+footer {
+background: #19110b;
+font-size: 14px;
+}
+.first-line {
+color: white;
+border-bottom: 1px solid #392d23;
+}
+.second-line a {
+color: white;
+text-decoration: none;
+}
+.flag {
+color: white;
+}
+.mobile-footer {
+border-top: 1px solid #392d23;
+color: white;
+text-align: center;
+font-size: 1.125rem;
+font-weight: 300;
+padding-top: 2rem;
+padding-bottom: 2rem;
+align-items: center;
+display: none;
+}
+@media screen and (max-width: 48rem) {
+.second-line {
+padding: 0 2rem;
+}
+
+.flag {
+display: none;
+}
+
+.first-line {
+text-align: center;
+}
+
+.mobile-footer {
+display: block;
+}
+}
+.col {
+padding-bottom: 1rem;
+}
+.flag-img {
+margin: 0 0.5rem;
+}

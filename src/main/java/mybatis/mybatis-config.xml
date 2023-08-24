@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="model.Member" alias="member"/>
+		<typeAlias type="model.Ani" alias="ani"/>
+		<typeAlias type="model.Board1" alias="board1"/>
+		<typeAlias type="model.Board2" alias="board2"/>
+		<typeAlias type="model.Board3" alias="board3"/>
+		<typeAlias type="model.Comment1" alias="comment1"/>
+		<typeAlias type="model.Comment2" alias="comment2"/>
+		<typeAlias type="model.Comment3" alias="comment3"/>
+		
+		
+		
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+				<property name="username" value="project"/>
+				<property name="password" value="1111"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper class="mybatis.MemberAnno"/>
+		<mapper class="mybatis.AniAnno"/>
+			<mapper class="mybatis.mapAnno"/>
+		<mapper resource="mybatis/Board1.xml"/>
+		<mapper resource="mybatis/Board2.xml"/>
+		<mapper resource="mybatis/Board3.xml"/>
+	</mappers>
+</configuration>

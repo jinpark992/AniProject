@@ -1,0 +1,233 @@
+/* 전체 페이지 스타일 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  padding: 2rem;
+  position: fixed;
+}
+
+.first-img {
+  width: 100vw;
+}
+
+.btn-outline-success {
+  color: chocolate;
+  border-color: chocolate;
+}
+
+.btn-outline-success:hover {
+  background-color: chocolate;
+  color: white;
+  border-color: chocolate;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: 0.5s ease-in-out;
+}
+
+footer {
+  background: #19110b;
+  font-size: 14px;
+}
+
+.first-line {
+  color: white;
+  border-bottom: 1px solid #392d23;
+}
+
+.second-line a {
+  color: white;
+  text-decoration: none;
+}
+
+.flag {
+  color: white;
+}
+
+.mobile-footer {
+  border-top: 1px solid #392d23;
+  color: white;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 300;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  align-items: center;
+  display: none;
+}
+
+@media screen and (max-width: 48rem) {
+  .second-line {
+      padding: 0 2rem;
+  }
+
+  .flag {
+      display: none;
+  }
+
+  .first-line {
+      text-align: center;
+  }
+
+  .mobile-footer {
+      display: block;
+  }
+}
+
+.col {
+  padding-bottom: 1rem;
+}
+
+.flag-img {
+  margin: 0 0.5rem;
+}
+
+/* 헤더 스타일 */
+
+/* 메인 스타일 */
+.imgarea {
+  width: 1200px;
+  margin: 0 auto; /* 가로 중앙 정렬 */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.search {
+  text-align: center;
+}
+
+/* 검색창 */
+.shopSearch {
+  width: 700px;
+  height: 50px;
+  padding: 9px 12px;
+  border: 2px solid #333;
+  margin-top: 25px;
+  border-radius: 24px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .15));
+}
+/* 카테고리(사료,간식,.... */
+.kategorie {
+  height: 100px;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.kategorie .kategorie1 {
+  width: 150px;
+  height: 25px;
+  margin: 15px;
+  border: 1px solid burlywood;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.kategorie .kategorie2 {
+  width: 150px;
+  height: 25px;
+  margin: 15px;
+  border: 1px solid burlywood;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.kategorie .kategorie3 {
+  width: 150px;
+  height: 25px;
+  margin: 15px;
+  border: 1px solid burlywood;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.kategorie .kategorie4 {
+  width: 150px;
+  height: 25px;
+  margin: 15px;
+  border: 1px solid burlywood;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+
+.products {
+  flex: 0 0 20%; /* 각 항목의 너비를 20%로 설정 */
+  margin: 10px; /* 항목 사이의 간격 설정 */
+  box-sizing: border-box; /* 항목의 너비에 padding과 border를 포함 */
+  text-align: center;
+  max-width: 1200px;
+}
+.products {
+  flex: 0 0 20%;
+  margin: 10px auto; /* 항목을 수평으로 가운데로 정렬합니다. */
+  box-sizing: border-box;
+  text-align: center;
+}
+.product img {
+  width: 200px; /* 이미지의 너비를 200px로 조정 */
+  height: auto; /* 이미지의 높이를 자동으로 조정하여 가로세로 비율 유지 */
+}
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-size: 14px;
+  color: #999;
+}
+
+.add-to-cart {
+  width: 150px;
+  height: 40px;
+  background-color: #4cacaf;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #45a049;
+}
+
+
+/* 푸터 스타일 */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  
+}
+#chatbotButton {
+  position: fixed;
+  bottom: 12.5vh; /* Adjust this to move up and down */
+  right: 20px;
+  z-index: 100;
+}
+#chatbotModal .modal-dialog {
+  max-width: 400px;
+  margin: 30px auto;
+}

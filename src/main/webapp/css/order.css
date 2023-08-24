@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+nav {
+    padding: 2rem;
+    position:fixed;
+  }
+  .first-img {
+    width: 100vw;
+  }
+  .btn-outline-success {
+    color: chocolate;
+    border-color: chocolate;
+  }
+  .btn-outline-success:hover {
+    background-color: chocolate;
+    color: white;
+    border-color: chocolate;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    transition: 0.5s ease-in-out;
+  }
+  footer {
+    background: #19110b;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 20px; /* 원하는 간격 크기로 조정하세요 */
+    height: 200px;
+}
+
+  .first-line {
+    color: white;
+    border-bottom: 1px solid #392d23;
+  }
+  .second-line a {
+    color: white;
+    text-decoration: none;
+  }
+  .flag {
+    color: white;
+  }
+  .mobile-footer {
+    border-top: 1px solid #392d23;
+    color: white;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 300;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    align-items: center;
+    display: none;
+  }
+  @media screen and (max-width: 48rem) {
+    .second-line {
+      padding: 0 2rem;
+    }
+  
+    .flag {
+      display: none;
+    }
+  
+    .first-line {
+      text-align: center;
+    }
+  
+    .mobile-footer {
+      display: block;
+    }
+  }
+  .col {
+    padding-bottom: 1rem;
+  }
+  .flag-img {
+    margin: 0 0.5rem;
+  }
+/* 메인화면 css */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.info .name,
+.info .money {
+  flex-basis: 50%;
+}
+h1 {
+    margin: 0;
+}
+
+main {
+    max-width: 800px;
+    height: 600px;
+    margin: 20px auto;
+    margin-bottom: 50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#cart-items {
+    margin-bottom: 20px;
+}
+
+#total-price {
+    text-align: right;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#checkout {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

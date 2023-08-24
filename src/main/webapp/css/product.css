@@ -1,0 +1,179 @@
+/* 게시물 목록 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+
+footer {
+  margin-top: 50px;
+}
+
+.pagination {
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+
+.pagination a {
+color: black;
+text-decoration: none;
+padding: 8px 12px;
+border: 1px solid #ccc;
+margin: 0 4px;
+}
+
+.pagination a.active {
+background-color: #ccc;
+}
+
+
+
+/* .search-bar {
+margin-top: 20px;
+display: flex;
+align-items: center;
+} */
+
+#search-input {
+padding: 10px;
+width: 200px;
+border: 1px solid #ddd;
+border-radius: 4px;
+margin-right: 10px;
+}
+
+#search-button {
+padding: 10px 15px;
+background-color: #ddd;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+#search-button:hover {
+background-color: #bbb;
+}
+
+.search-bar {
+margin-top: 20px;
+display: flex;
+align-items: center;
+justify-content: center; /* 가운데 정렬 설정 */
+}
+
+nav {
+padding: 2rem;
+position:fixed;
+}
+.first-img {
+width: 100vw;
+}
+.btn-outline-success {
+color: chocolate;
+border-color: chocolate;
+}
+.btn-outline-success:hover {
+background-color: chocolate;
+color: white;
+border-color: chocolate;
+}
+.card:hover {
+transform: scale(1.05);
+transition: 0.5s ease-in-out;
+}
+footer {
+background: #19110b;
+font-size: 14px;
+}
+.first-line {
+color: white;
+border-bottom: 1px solid #392d23;
+}
+.second-line a {
+color: white;
+text-decoration: none;
+}
+.flag {
+color: white;
+}
+.mobile-footer {
+border-top: 1px solid #392d23;
+color: white;
+text-align: center;
+font-size: 1.125rem;
+font-weight: 300;
+padding-top: 2rem;
+padding-bottom: 2rem;
+align-items: center;
+display: none;
+}
+@media screen and (max-width: 48rem) {
+.second-line {
+padding: 0 2rem;
+}
+
+.flag {
+display: none;
+}
+
+.first-line {
+text-align: center;
+}
+
+.mobile-footer {
+display: block;
+}
+}
+.col {
+padding-bottom: 1rem;
+}
+.flag-img {
+margin: 0 0.5rem;
+}
+
+.button-wrapper {
+  text-align: right;
+}
+
+.write-button {
+  background-color: rgb(212, 149, 72);
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  height: 42px;
+  width: 95px;
+  margin-right: 20px;
+}
+
+.write-button:hover {
+  background-color: gray;
+  color: white;
+}
+
+
+#chatbotButton {
+  position: fixed;
+  bottom: 12.5vh; /* Adjust this to move up and down */
+  right: 20px;
+  z-index: 100;
+  }
+  #chatbotModal .modal-dialog {
+  max-width: 400px;
+  margin: 30px auto;
+  }

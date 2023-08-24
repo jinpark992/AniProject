@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.board1">
+
+	<insert id="insertBoard" parameterType="board1">
+		insert into board1 values
+		(board1seq.nextval,#{boardid},#{name},#{pass},#{subject},#{content},#{file1},sysdate,0,board1seq.currval,0,0)
+	</insert>
+
+
+	<insert id="insertComment" parameterType="map">
+		insert into
+		comment1 values
+		(boardcomseq.nextval,#{num},#{comment},sysdate,#{nicname})
+	</insert>
+
+	<select id="boardCount" parameterType="string" resultType="int">
+		select nvl(count(*),0) from board1 where boardid = #{boardid}
+	</select>
+
+	<select id="boardList" parameterType="map" resultType="board1">
+		select *
+		from (
+		select rownum rnum , a.* from
+		(select * from board1 where boardid = #{boardid}
+		order by num desc) a) where rnum BETWEEN #{start} and #{end}
+	</select>
+
+	<select id="commentList" parameterType="int" resultType="comment1">
+		select * from comment1 where num = #{num} order by regdate desc
+	</select>
+
+     <select id="boardOne" parameterType="int"  resultType="board1">
+     select * from board1 where num = #{num}
+     </select>
+
+	<update id="boardUpdate"  parameterType="board1" >
+	update board1 set subject = #{subject}, content = #{content}, 
+	file1 = #{file1} where num = #{num}
+	</update>
+
+	<delete id="boardDelete"  parameterType="int">
+	delete from board1 where num = #{num}
+	</delete>
+	
+	<delete id="deleteComment"  parameterType="int">
+	delete from comment1  where ser = #{ser}	
+	</delete>
+
+	<update id="updateComment"  parameterType="map" >
+	update comment1 set  content = #{content} 	 where ser = #{ser}
+	</update>
+	
+	<select id="searchBoard" parameterType="map" resultType="board1">
+  select *
+      from (
+      select rownum rnum , a.* from
+      (select * from board1 where boardid = #{boardid} and subject||content like #{query}
+      order by num desc) a) where rnum BETWEEN #{start} and #{end}
+</select>
+
+<select id="searchBoardCount" parameterType="map" resultType="int">
+    SELECT COUNT(*)
+FROM board1
+WHERE boardid = #{boardid}
+AND (subject LIKE '%' || #{query} || '%' OR content LIKE '%' || #{query} || '%')
+
+
+</select>
+
+<select id="searchBoardList" parameterType="map" resultType="board1">
+    SELECT *
+FROM (
+    SELECT rownum rnum, a.*
+    FROM (
+        SELECT *
+        FROM board1
+        WHERE boardid = #{boardid}
+        AND (subject LIKE '%' || #{query} || '%' OR content LIKE '%' || #{query} || '%')
+        ORDER BY num DESC
+    ) a
+) WHERE rnum BETWEEN #{start} AND #{end}
+
+</select>
+
+<update id="incrementReadCount" parameterType="int">
+    UPDATE board1
+    SET readcnt = readcnt + 1
+    WHERE num = #{num}
+</update>
+
+
+
+
+</mapper>

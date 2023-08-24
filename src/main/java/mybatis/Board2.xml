@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.board2">
+
+	<insert id="insertBoard" parameterType="board2">
+		insert into
+		 board2 values
+		(board2seq.nextval,#{boardid},#{name},#{pass},#{subject},#{content},#{file1},sysdate,0,board2seq.currval,0,0, #{location},#{recommendation},0,#{price},#{shipping})
+	</insert>
+
+
+	<insert id="insertComment" parameterType="map">
+		insert into	
+		comment2 values
+		(board2comseq.nextval,#{num},#{comment},sysdate)
+	</insert>
+	
+	<!-- 좋아요 추가 -->
+	<insert id="LikeInsert" parameterType="map">
+	   	insert into	
+	   	liketable2 values
+		(#{boardnum},#{nicname},0)
+	</insert>
+	
+	
+	
+	
+	
+	
+	<update id="updateReadcnt"   parameterType="int">
+	
+	update board2 set readcnt = readcnt+1   where num = #{num}
+	</update>
+	
+
+	<select id="boardCount" parameterType="string" resultType="int">
+		select nvl(count(*),0) from board2 where boardid = #{boardid}  ${column}
+	</select>
+
+	<select id="boardList" parameterType="map" resultType="board2">
+		select *
+		from (
+		select rownum rnum , a.*, (select nvl(count(*),0) from comment2 where num = a.num) totalcount from
+		(select * from board2 where boardid = #{boardid} ${column}
+		order by num desc) a) where rnum BETWEEN #{start} and 	#{end}
+	</select>
+
+	<select id="board2search" parameterType="map" resultType="board2">
+		select *
+		from (
+		select rownum rnum , a.*, (select nvl(count(*),0) from comment2 where num = a.num) totalcount from
+		(select * from board2 where boardid = #{boardid} ${keyword}
+		order by num desc) a) where rnum BETWEEN #{start} and 	#{end}
+	</select>
+
+     <select id="boardCountsearch" parameterType="string" resultType="int">
+		select nvl(count(*),0) from board2 where boardid = #{boardid}  ${keyword}
+	</select>
+
+
+	<select id="commentList" parameterType="int" resultType="comment2">
+		select * from comment2 where num = #{num} order by regdate desc
+	</select>
+
+     <select id="boardOne" parameterType="int"  resultType="board2">
+     select * from board2 where num = #{num}
+     </select>
+     
+       <select id="commentOne" parameterType="int"  resultType="comment2">
+     select * from comment2 where ser = #{ser}
+     </select>
+     
+
+	<update id="boardUpdate"  parameterType="board2" >
+	update board2 set location= #{location}, recommendation= #{recommendation}, price= #{price}, shipping = #{shipping}, subject= #{subject}, content = #{content}  where num = #{num}
+	</update>
+
+
+
+
+	
+	
+	
+	<delete id="boardDelete"  parameterType="int">
+	delete from board2 where num = #{num}
+	</delete>
+	
+	<delete id="commentDelete"  parameterType="int">
+	delete from comment2  where ser = #{ser}	
+	</delete>
+	<delete id="CommentEdit"  parameterType="map">
+	update comment2 set content=#{content}  where ser = #{ser}	
+	</delete>
+	
+	 <!-- 게시물의 조회수 증가 쿼리 -->
+    <update id="increaseReadCount" parameterType="int">
+        UPDATE board
+        SET readcnt = readcnt + 1
+        WHERE num = #{num}
+    </update>
+    
+    
+    
+	   <!-- 좋아요 조회 -->
+	<select id="getLikeCount" parameterType="map" resultType="int">
+	    select nvl(likecount,0) from liketable2
+	    where boardnum = #{boardnum} and nicname = #{nicname}
+	</select>
+	
+	
+	
+	<!-- 좋아요 업데이트 -->
+	<update id="LikeUpdate" parameterType="map">
+	    update liketable2
+	    set likecount = likecount + 1
+	    where boardnum = #{boardnum} AND nicname = #{nicname}
+	</update>
+	
+	
+	<!-- 좋아요 업데이트 -->
+	<select id="CommentCount" parameterType="int" resultType="int">
+	  select nvl(count(*),0) from comment2  <!-- null 일 경우 0 넣어라 -->
+	  where num = #{num}
+
+	</select>
+    
+    
+    
+    
+    
+
+
+
+
+
+</mapper>
