@@ -11,77 +11,100 @@
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+   body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .con {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         .board-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
+
         .board-table th,
         .board-table td {
             padding: 10px;
             border: 1px solid #ccc;
             text-align: center;
         }
+
         .board-image {
             max-width: 100%;
             height: auto;
         }
+
         .board-button {
             padding: 5px 10px;
             margin: 5px;
         }
+
         .comment-input {
             width: 100%;
             resize: none;
             padding: 5px;
             border: 1px solid #ccc;
         }
+
         .comment-button {
             padding: 5px 10px;
             margin: 5px;
         }
+
         .comment-list {
             padding-top: 20px;
             border-top: 1px solid #ccc;
         }
-        .comment-item {	
+
+        .comment-item {
             margin-bottom: 10px;
             padding: 10px;
             border: 1px solid #ccc;
             background-color: #f8f9fa;
         }
+
         .comment-right {
-        text-align: right;
+            text-align: right;
         }
-	        
-.comment {
-    display: flex;
-    flex-direction: row;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-    align-items: center; /* 수직 가운데 정렬 */
-}
 
-.comment-content {
-    flex: 1; /* 남은 공간 모두 차지 */
-    font-size: 14px;
-}
+        .comment {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
 
-.comment-actions {
-    display: flex;
-    flex-direction: row; /* 수정 버튼과 삭제 버튼을 가로로 나열 */
-    margin-left: 10px;
-}
+        .comment-content {
+            flex: 1;
+            font-size: 14px;
+        }
 
-.edit-button, .delete-button {
-    margin-right: 10px; /* 버튼 사이 간격 설정 */
-}
+        .comment-actions {
+            display: flex;
+            flex-direction: row;
+            margin-left: 10px;
+        }
 
-.comment-date {
-    font-size: 12px;
-    color: #888;
-}
+        .edit-button,
+        .delete-button {
+            margin-right: 10px;
+        }
+
+        .comment-date {
+            font-size: 12px;
+            color: #888;
+        }
     </style>
     
     <script>
@@ -214,7 +237,7 @@ function commentPro(num) {
 
 
 <body>
-<div class="container">
+<div class="con">
     <table class="board-table">
         <tr>
             <th>지역</th>
@@ -223,15 +246,15 @@ function commentPro(num) {
             <td>${board2.recommendation}</td>
         </tr>
         <tr>
-            <th>가격</th>	
+            <th>가격</th>
             <td>${board2.price}원</td>
-            <th>배송비</th>  
+            <th>배송비</th>
             <td>${board2.shipping}원</td>
         </tr>
         <tr>
             <th>글번호</th>
-            <td>${boardNum}</td>  
-	            <th>조회수</th>
+            <td>${boardNum}</td>
+            <th>조회수</th>
             <td>${board2.readcnt}</td>
         </tr>
         <tr>
@@ -239,15 +262,13 @@ function commentPro(num) {
             <td>${board2.name}</td>
             <th>작성일</th>
             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board2.regdate}" /></td>
-            
-      
         </tr>
         <tr>
             <th>이미지</th>
             <td colspan="3">
                 <img src="${pageContext.request.contextPath}/view/board2/images/${board2.file1}" class="board-image" />
             </td>
-        </tr>	
+        </tr>
         <tr>
             <th>글제목</th>
             <td colspan="3">${board2.subject}</td>
@@ -257,7 +278,7 @@ function commentPro(num) {
             <td colspan="3">${board2.content}</td>
         </tr>
         <tr>
-            <td colspan="4">                                                                                    
+            <td colspan="4">
                 <p class="d-flex justify-content-end">
                     <input type="button" value="글수정" onclick="document.location.href='${pageContext.request.contextPath}/board2/board2UpdateForm?num=${board2.num}&boardNum=${boardNum}'" class="btn btn-primary board-button" />
                     <input type="button" value="글삭제" onclick="document.location.href='${pageContext.request.contextPath}/board2/board2DeleteForm?num=${board2.num}'" class="btn btn-danger board-button" />
@@ -265,34 +286,26 @@ function commentPro(num) {
                 </p>
             </td>
         </tr>
-	       
-	        <tr>	
-	            <td colspan="3">
-	                <textarea rows="1" class="comment-input" onkeyup="enterkey('${board2.num}')" cols="50" id="comment"></textarea>
-	            </td>
-	          <td>
-	    <span id="totalCommentCount">총 댓글(${commentLi.size()})</span>
-	    <input type="button" value="입력(enter 입력)" onclick="commentPro('${board2.num}')" class="btn btn-primary comment-button" />
-			</td>
-	        </tr>
-	        
-	        
-		<!--댓글 조회수 구현, 댓글 좋아요 구현 해야함 -->	        
-	    <tr>
-			    <td colspan="3" class="comment-list" id="commentList">
-			        <c:forEach var="c" items="${commentLi}">
-			           
-			            <div class="comment-item" id="comment_${c.ser}">
-			                <p>${c.toHtml()}</p>
-			              
-			            </div>
-			        </c:forEach>
-			    </td>
-			    
-			    <td>
-				<!--댓글 추가  -->    
-				</td>
-		</tr>
+        <tr>
+            <td colspan="3">
+                <textarea rows="1" class="comment-input" onkeyup="enterkey('${board2.num}')" cols="50" id="comment"></textarea>
+            </td>
+            <td>
+                <span id="totalCommentCount">총 댓글(댓글 입력시 아이디 입력되게 하기)(${commentLi.size()})</span>
+                <input type="button" value="입력(enter 입력)" onclick="commentPro('${board2.num}')" class="btn btn-primary comment-button" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="comment-list" id="commentList">
+                <c:forEach var="c" items="${commentLi}">
+                    <div class="comment-item" id="comment_${c.ser}">
+                        <p>${c.toHtml()}</p>
+                    </div>
+                </c:forEach>
+            </td>
+            <td>
+            </td>
+        </tr>
     </table>
 </div>
 </body>

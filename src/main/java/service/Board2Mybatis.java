@@ -180,9 +180,9 @@ public class Board2Mybatis {
 
 	}
 
-	public List<String> messageSendRe() { // 메세지 발신함
+	public List<String> messageSendDi(String nicname) { // 메세지 발신함
 
-		return sqlSession.selectList(NS + "messageSendRe");
+		return sqlSession.selectList(NS + "messageSendDi", nicname);
 
 	}
 

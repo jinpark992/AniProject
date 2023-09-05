@@ -16,8 +16,8 @@
 	<!-- board2seq.nextval은 Oracle 데이터베이스에서 사용되는 시퀀스(sequence) 개념을 나타내는 것입니다. 시퀀스는 데이터베이스 내에서 고유한 순번을 생성하는 데 사용되는 객체로, 주로 고유한 식별자를 생성하는 데 활용됩니다. -->
 	</insert>
 
-   <!-- 댓글 텍스트 입력 -->
-	<insert id="insertComment" parameterType="map">
+   <!-- 댓글 텍스트 입력(닉네임 insert 부분 추가해야함) -->
+	<insert id="insertComment" parameterType="map">   
 		insert into	
 		comment2 values
 		(board2comseq.nextval,#{num},#{comment},sysdate)
@@ -163,14 +163,15 @@
     
  	<!--     ANIMEMBER에 있는 NICNAME 가져오기 -->
     <select id="animember" resultType="string">
-       select nicname from animember
+       select nicname from animember	
 	</select> 
 	
 	 <!-- 메세지 발신함 -->
-	 <select id="messageSendRe" resultType="message">  
-		SELECT * from messagesend 
-
+	 <select id="messageSendDi" resultType="message"  parameterType="string">  
+		SELECT * from messagesend where sender = #{value}
 	</select> 
+	
+	<!-- 메세지 수신함 -->
     
     
     

@@ -140,18 +140,7 @@ public class board2Controller  {
 
 	    List<Board2> list = bd.boardList(keyword, column, pageInt, limit, boardid); // 게시물 리스트 조회
 
-	    String boardName = "";
-	    switch (boardid) { // boardid에 따라 게시판 이름 설정
-	        case "1":
-	            boardName = "공지사항";
-	            break;
-	        case "2":
-	            boardName = "자유게시판";
-	            break;
-	        case "3":
-	            boardName = "QnA";
-	            break;
-	    }
+	
 
 	    // 페이징 처리
 	    int bottomLine = 3; // 아래에 보여질 페이지 번호 개수
@@ -169,7 +158,6 @@ public class board2Controller  {
 	    m.addAttribute("pageInt", pageInt);
 	    m.addAttribute("list", list);
 	    m.addAttribute("boardNum", boardNum);
-	    m.addAttribute("boardName", boardName);
 
 	    return "board2/board2List"; // "board2/board2List.jsp" 뷰로 이동하여 게시물 목록을 표시
 	}

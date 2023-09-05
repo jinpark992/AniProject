@@ -103,6 +103,8 @@ Component-scan과의 차이점은 이 설정은 Bean을 등록하는 작업을 �
 			<mvc:mapping path="/member/memberList" />
 			<bean class="login.LoginAdmin" />
 		</mvc:interceptor>
+		
+		
 		<mvc:interceptor>  <!-- 1. 이쪽에 URL 이 존재하면 -->
 			<mvc:mapping path="/member/memberInfo" />
 			<mvc:mapping path="/member/memberUpdateForm" />

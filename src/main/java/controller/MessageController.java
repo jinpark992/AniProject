@@ -43,7 +43,7 @@ public class MessageController {
 				// 그냥 Controller 사용하기 위해서 해당 메소드를 사용한다고 생각하면 될듯.
 	}
 	 
-	@RequestMapping("/messageSendForm")    // 메세지 보내기 
+	@RequestMapping("/messageSendForm")    // 메세지 보내기(messageSendForm)
     public String message(Model model) {
         List<String> li = bd.animember();
         System.out.println(li);
@@ -52,13 +52,14 @@ public class MessageController {
         return "message/messageSendForm";
     }
 	
-	@RequestMapping("/messageReceptionForm") // 메세지 수신함 및 발신함
-	public String messageReception(Model model) {
-        List<String> Re = bd.messageSendRe(); // 메세지 발신 사항
-        System.out.println(Re);
+	@RequestMapping("/messageReceptionForm") // 메세지 발신함(messagedispatch)
+	public String messagedispatch (Model model) {
+		String nicname = (String) session.getAttribute("nicname"); // 닉네임 중복 방지
+        List<String> di = bd.messageSendDi(nicname); // 메세지 발신 사항
+        System.out.println(di);
    
 	 
-	    m.addAttribute("Re",Re);
+	    m.addAttribute("di",di);
 	    
 	    return "message/messageReceptionForm";
 	}
@@ -73,7 +74,11 @@ public class MessageController {
 	 * return "message/messageSendForm"; }
 	 */
 	
-	@PostMapping("messageSend")      
+	
+	
+	
+	
+	@PostMapping("messageSend")      // 쪽지함(쪽지보내기)
 	public String messageSend(Message meg) {  // Message.java Model(getter,setter) 이용
        bd.messageSend(meg);
        
