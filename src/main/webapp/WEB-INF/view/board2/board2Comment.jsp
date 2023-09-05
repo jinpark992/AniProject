@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -236,7 +238,9 @@ function commentPro(num) {
             <th>작성자</th>
             <td>${board2.name}</td>
             <th>작성일</th>
-            <td>${board2.regdate}</td>	
+            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board2.regdate}" /></td>
+            
+      
         </tr>
         <tr>
             <th>이미지</th>

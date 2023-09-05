@@ -5,4 +5,6 @@
 </html>
  
  <!-- Confirmation points-->
-<!--  url -> controller -> mybatis -> mapping -->
+<!--  url -> controller -> mybatis -> mapper -->	
+
+<!-- eclipse 자동정렬 ctrl+shift+F -->

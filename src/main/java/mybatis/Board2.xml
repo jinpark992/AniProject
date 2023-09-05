@@ -2,96 +2,105 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.board2">
+ 
+ 
+ 	<!-- 매퍼  -->  
+  
+  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!게시물 관련 쿼리!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
+    <!-- 게시판 텍스트 입력 -->
 	<insert id="insertBoard" parameterType="board2">
-		insert into
+		 insert into
 		 board2 values
 		(board2seq.nextval,#{boardid},#{name},#{pass},#{subject},#{content},#{file1},sysdate,0,board2seq.currval,0,0, #{location},#{recommendation},0,#{price},#{shipping})
+	<!-- board2seq.nextval은 Oracle 데이터베이스에서 사용되는 시퀀스(sequence) 개념을 나타내는 것입니다. 시퀀스는 데이터베이스 내에서 고유한 순번을 생성하는 데 사용되는 객체로, 주로 고유한 식별자를 생성하는 데 활용됩니다. -->
 	</insert>
 
-
+   <!-- 댓글 텍스트 입력 -->
 	<insert id="insertComment" parameterType="map">
 		insert into	
 		comment2 values
 		(board2comseq.nextval,#{num},#{comment},sysdate)
 	</insert>
 	
-	<!-- 좋아요 추가 -->
-	<insert id="LikeInsert" parameterType="map">
-	   	insert into	
-	   	liketable2 values
-		(#{boardnum},#{nicname},0)
-	</insert>
 	
-	
-	
-	
-	
-	
+	<!-- 댓글 조회수 업데이트 -->
 	<update id="updateReadcnt"   parameterType="int">
-	
 	update board2 set readcnt = readcnt+1   where num = #{num}
 	</update>
 	
 
+		<!-- 게시물 수 조회 쿼리 -->
 	<select id="boardCount" parameterType="string" resultType="int">
-		select nvl(count(*),0) from board2 where boardid = #{boardid}  ${column}
+	    select nvl(count(*), 0) from board2 where boardid = #{boardid} ${column}
 	</select>
-
+	
+	<!-- 게시물 목록 조회 쿼리 -->
 	<select id="boardList" parameterType="map" resultType="board2">
-		select *
-		from (
-		select rownum rnum , a.*, (select nvl(count(*),0) from comment2 where num = a.num) totalcount from
-		(select * from board2 where boardid = #{boardid} ${column}
-		order by num desc) a) where rnum BETWEEN #{start} and 	#{end}
+	    select * from (
+	        select rownum rnum, a.*, (select nvl(count(*), 0) from comment2 where num = a.num) totalcount
+	        from (
+	            select * from board2 where boardid = #{boardid} ${column}
+	            order by num desc
+	        ) a
+	    ) where rnum BETWEEN #{start} and #{end}
 	</select>
-
+	
+	<!-- 게시물 검색 조회 쿼리 -->
 	<select id="board2search" parameterType="map" resultType="board2">
-		select *
-		from (
-		select rownum rnum , a.*, (select nvl(count(*),0) from comment2 where num = a.num) totalcount from
-		(select * from board2 where boardid = #{boardid} ${keyword}
-		order by num desc) a) where rnum BETWEEN #{start} and 	#{end}
+	    select *
+	    from (
+	        select rownum rnum, a.*, (select nvl(count(*), 0) from comment2 where num = a.num) totalcount
+	        from (
+	            select * from board2 where boardid = #{boardid} ${keyword}
+	            order by num desc
+	        ) a
+	    ) where rnum BETWEEN #{start} and #{end}
 	</select>
-
-     <select id="boardCountsearch" parameterType="string" resultType="int">
-		select nvl(count(*),0) from board2 where boardid = #{boardid}  ${keyword}
+	
+	<!-- 게시물 검색 결과 수 조회 쿼리 -->
+	<select id="boardCountsearch" parameterType="string" resultType="int">
+	    select nvl(count(*), 0) from board2 where boardid = #{boardid} ${keyword}
 	</select>
-
-
+	
+	<!-- 댓글 목록 조회 쿼리 -->
 	<select id="commentList" parameterType="int" resultType="comment2">
-		select * from comment2 where num = #{num} order by regdate desc
+	    select * from comment2 where num = #{num} order by regdate desc
 	</select>
-
-     <select id="boardOne" parameterType="int"  resultType="board2">
-     select * from board2 where num = #{num}
-     </select>
-     
-       <select id="commentOne" parameterType="int"  resultType="comment2">
-     select * from comment2 where ser = #{ser}
-     </select>
-     
-
-	<update id="boardUpdate"  parameterType="board2" >
-	update board2 set location= #{location}, recommendation= #{recommendation}, price= #{price}, shipping = #{shipping}, subject= #{subject}, content = #{content}  where num = #{num}
+	
+	<!-- 특정 게시물 조회 쿼리 -->
+	<select id="boardOne" parameterType="int" resultType="board2">
+	    select * from board2 where num = #{num}
+	</select>
+	
+	<!-- 특정 댓글 조회 쿼리 -->
+	<select id="commentOne" parameterType="int" resultType="comment2">
+	    select * from comment2 where ser = #{ser}
+	</select>
+	
+	<!-- 게시물 수정 쿼리 -->
+	<update id="boardUpdate" parameterType="board2">
+	    update board2 set
+	    location = #{location}, recommendation = #{recommendation},
+	    price = #{price}, shipping = #{shipping},
+	    subject = #{subject}, content = #{content}
+	    where num = #{num}
 	</update>
-
-
-
-
 	
-	
-	
-	<delete id="boardDelete"  parameterType="int">
-	delete from board2 where num = #{num}
+	<!-- 게시물 삭제 쿼리 -->
+	<delete id="boardDelete" parameterType="int">
+	    delete from board2 where num = #{num}
 	</delete>
 	
-	<delete id="commentDelete"  parameterType="int">
-	delete from comment2  where ser = #{ser}	
+	<!-- 댓글 삭제 쿼리 -->
+	<delete id="commentDelete" parameterType="int">
+	    delete from comment2 where ser = #{ser}
 	</delete>
-	<delete id="CommentEdit"  parameterType="map">
-	update comment2 set content=#{content}  where ser = #{ser}	
-	</delete>
+	
+	<!-- 댓글 수정 쿼리 -->
+	<update id="CommentEdit" parameterType="map">
+	    update comment2 set content = #{content} where ser = #{ser}
+	</update>
 	
 	 <!-- 게시물의 조회수 증가 쿼리 -->
     <update id="increaseReadCount" parameterType="int">
@@ -101,31 +110,67 @@
     </update>
     
     
+  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!좋아요 기능 쿼리 추가!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+     
+    <!-- 좋아요 추가 -->
+	<insert id="LikeInsert" parameterType="map">
+	   	insert into	
+	   	liketable2 values
+		(#{boardnum},#{nicname},0)
+	</insert>
     
-	   <!-- 좋아요 조회 -->
+	<!-- 좋아요 조회 -->
 	<select id="getLikeCount" parameterType="map" resultType="int">
-	    select nvl(likecount,0) from liketable2
-	    where boardnum = #{boardnum} and nicname = #{nicname}
+	    select nvl(count(*),0) from liketable2
+	    where boardnum = #{boardnum} and nicname = #{nicname} and mod(likecount,2)=0
 	</select>
 	
-	
+	<select id="getLike" parameterType="map" resultType="int">
+	    select nvl(count(*),0) from liketable2
+	    where boardnum = #{boardnum} and nicname = #{nicname}
+	</select>
 	
 	<!-- 좋아요 업데이트 -->
 	<update id="LikeUpdate" parameterType="map">
 	    update liketable2
 	    set likecount = likecount + 1
 	    where boardnum = #{boardnum} AND nicname = #{nicname}
-	</update>
-	
+	</update>	
 	
 	<!-- 좋아요 업데이트 -->
-	<select id="CommentCount" parameterType="int" resultType="int">
+	<select id="CommentCount" parameterType="int">
 	  select nvl(count(*),0) from comment2  <!-- null 일 경우 0 넣어라 -->
 	  where num = #{num}
 
 	</select>
     
+  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!! 랜덤게임 기능 쿼리 추가!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
     
+    <!-- 랜덤 게임 -->
+    <select id="randomList"  resultType="string" > <!-- randomList 만들기 -->
+    select item_name from random 
+    </select>
+    
+    
+  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!! 메세지 보내기 기능 추가 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+  
+      <!-- 메세지 보내기 -->  <!-- mybatis-connfig.xml의 alias 값 parametertype 적어주기! -->
+    <insert id="messageSend"  parameterType="message" > <!-- 메세지 보내기 만들기 -->
+    insert into
+		 messagesend values
+		(messagesendseq.nextval,#{sender},#{receiver},#{subject},#{content},sysdate,0) <!-- send_date는 sysdate임, ReadED는 수신/비수신인데 아직 구현안했으므로 0으로 표현 -->
+    </insert>
+    
+ 	<!--     ANIMEMBER에 있는 NICNAME 가져오기 -->
+    <select id="animember" resultType="string">
+       select nicname from animember
+	</select> 
+	
+	 <!-- 메세지 발신함 -->
+	 <select id="messageSendRe" resultType="message">  
+		SELECT * from messagesend 
+
+	</select> 
     
     
     

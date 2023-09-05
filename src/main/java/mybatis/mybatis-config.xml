@@ -3,18 +3,15 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<typeAliases>
+	<typeAliases>  
+<!-- 이 코드는 MyBatis라는 Java ORM (Object-Relational Mapping) 프레임워크의 설정 중 하나인 "Type Aliases"를 정의하는 부분입니다.
+ MyBatis는 데이터베이스와 Java 객체 사이의 매핑을 처리하여 데이터베이스 조작을 더 편리하게 만드는 데 사용됩니다. -->
 		<typeAlias type="model.Member" alias="member"/>
 		<typeAlias type="model.Ani" alias="ani"/>
-		<typeAlias type="model.Board1" alias="board1"/>
 		<typeAlias type="model.Board2" alias="board2"/>
-		<typeAlias type="model.Board3" alias="board3"/>
-		<typeAlias type="model.Comment1" alias="comment1"/>
 		<typeAlias type="model.Comment2" alias="comment2"/>
-		<typeAlias type="model.Comment3" alias="comment3"/>
-		
-		
-		
+		<typeAlias type="model.Message" alias="message"/>
+
 	</typeAliases>
 
 	<environments default="development">
@@ -32,9 +29,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper class="mybatis.MemberAnno"/>
 		<mapper class="mybatis.AniAnno"/>
-			<mapper class="mybatis.mapAnno"/>
-		<mapper resource="mybatis/Board1.xml"/>
+		<mapper class="mybatis.mapAnno"/>
 		<mapper resource="mybatis/Board2.xml"/>
-		<mapper resource="mybatis/Board3.xml"/>
 	</mappers>
 </configuration>

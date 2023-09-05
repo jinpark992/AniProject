@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias type="member.Member" alias="member"/>
-		 <typeAlias type="board.Board1" alias="board"/> 
-		  <typeAlias type="board.Comment1" alias="comment"/> 
+		 <typeAlias type="board.Board2" alias="board"/> 
+		  <typeAlias type="board.Comment2" alias="comment"/> 
 	</typeAliases>
 
 	<environments default="development">

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>타이틀 : <sitemesh: write property='title'/></title>
+<title>Kic dog Community</title>
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Lovely Dog</title>
@@ -118,10 +118,10 @@ nav {
         Community
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/board1/boardList?boardid=1">자유게시판</a></li>
-	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/board2/board2List">정보 &amp;공유게시판</a></li>  
-		<li><a class="dropdown-item"href="${pageContext.request.contextPath}/board3/board3List?boardid=3">친구 찾기</a></li>
+	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/board2/board2List">자유 &amp; 공유게시판</a></li>  
+    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/board2/board2List">동네 친구 찾기</a></li>  
       </ul>
+      
     </li>
     
   
@@ -129,15 +129,10 @@ nav {
       <a href="${pageContext.request.contextPath}/api/maps" class="nav-link"  onmouseover="changeWord(this, ['지역 정보', 'Location information'])">Location information</a>
     </li>
     	
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" onmouseover="changeWord(this, ['꿀팁', 'Tip'])" >
-          tip
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="${pageContext.request.contextPath}/notion/notion">반려동물 상식</a></li>  <!-- 진행 예정 -->
-          <li><a class="dropdown-item" href="${pageContext.request.contextPath}/random/randomform">반려동물 랜덤it템</a></li>    <!-- 진행예정 -->
-          
-        </ul>
+   
+     <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/random/randomform" onmouseover="changeWord(this, ['랜덤 플레이', 'RandomPlay	'])">RandomPlay</a>
+    </li>
     
 
 
@@ -159,15 +154,32 @@ nav {
   }
 </script>
 
-            <div class="navbar-nav">
-  <c:if  test="${email!=null}" >
-    <a class="nav-link" href="${pageContext.request.contextPath}/member/logout">로그아웃</a>
-    <a class="nav-link" href="${pageContext.request.contextPath}/member/myinfo">내 정보</a>
-  </c:if>
+   <div class="navbar-nav">
+  <c:if test="${email != null}">
+    <a class="nav-link" href="${pageContext.request.contextPath}/message/messageSendForm">
+        <i class="fas fa-envelope"></i> 쪽지 보내기
+    </a>
+    <a class="nav-link" href="${pageContext.request.contextPath}/message/messageReceptionForm">
+        <i class="fas fa-envelope"></i> 쪽지함
+    </a>
+    <a class="nav-link" href="${pageContext.request.contextPath}/member/logout">
+        <i class="fas fa-sign-out-alt"></i> 로그아웃
+    </a>
+    <a class="nav-link" href="${pageContext.request.contextPath}/member/myinfo">
+        <i class="fas fa-user"></i> 내 정보
+    </a>
+</c:if>
+
   <c:if  test="${email==null}" >
-    <a class="nav-link" href="${pageContext.request.contextPath}/member/login">로그인</a>
-    <a class="nav-link" href="${pageContext.request.contextPath}/member/custom_signup">회원가입</a>
-  </c:if>
+    <a class="nav-link" href="${pageContext.request.contextPath}/message/messageSendForm")">
+        <i class="fas fa-envelope"></i> 쪽지 보내기</a> <!-- 쪽지 보내기 구현 예정 -->
+    <a class="nav-link" href="${pageContext.request.contextPath}/message/messageReceptionForm")"> 
+        <i class="fas fa-envelope"></i> 쪽지함</a> <!-- 쪽지 함 구현 예정 -->
+    <a class="nav-link" href="${pageContext.request.contextPath}/member/login">
+        <i class="fas fa-sign-in-alt"></i> 로그인</a>
+    <a class="nav-link" href="${pageContext.request.contextPath}/member/custom_signup">
+        <i class="fas fa-user-plus"></i> 회원가입</a>
+</c:if>
 </div>
           </div>
         </div>
