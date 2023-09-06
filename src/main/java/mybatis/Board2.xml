@@ -171,7 +171,15 @@
 		SELECT * from messagesend where sender = #{value}
 	</select> 
 	
-	<!-- 메세지 수신함 -->
+		 <!-- 메세지 수신함 -->
+	 <select id="messageSendRe" resultType="message"  parameterType="string">  
+		SELECT * from messagesend where receiver = #{value}
+	</select> 
+	
+	
+	
+	
+
     
     
     

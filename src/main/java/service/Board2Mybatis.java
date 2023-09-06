@@ -186,5 +186,16 @@ public class Board2Mybatis {
 		return sqlSession.selectList(NS + "messageSendDi", nicname);
 
 	}
+	
+	public List<String> messageSendRe(String nicname) { // 메세지 수신함
+
+		return sqlSession.selectList(NS + "messageSendRe", nicname);
+
+	}
+	
+	
+	
+	
+	
 
 }

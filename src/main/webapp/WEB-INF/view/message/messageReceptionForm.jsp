@@ -45,22 +45,23 @@ body {
 
 	<div class="container">
     <div class="row">
-        <!-- 수신함 -->
+        <!-- 수신함 -->	
         <div class="col-md-6">
             <div class="inbox">
                 <h2 class="mb-3">수신함</h2>  <!-- 구현중.. -->
-                <c:forEach items="" var="inboxMessage">
+                 <c:forEach items="${re}" var="inMessage">
                     <div class="message">
-                        <h3>제목: ${inboxMessage.subject}</h3>
-                        <p>보낸 사람: ${inboxMessage.sender}</p>
-                        <p>내용: ${inboxMessage.content}</p>
+                        <h3>제목: ${inMessage.subject}</h3>  
+                        <p>보낸 사람: ${inMessage.receiver}</p>
+                        <p>받는 사람: ${inMessage.sender}</p>
+                        <p>내용: ${inMessage.content}</p>
                         <p>
-                            발신일:
+                            수신일:
                             <fmt:formatDate pattern="yyyy-MM-dd"
-                                value="${inboxMessage.send_date}" />
+                                value="${inMessage.send_date}" />
                         </p>
                     </div>
-                </c:forEach>
+                </c:forEach> 
             </div>
         </div>
 
@@ -68,16 +69,16 @@ body {
         <div class="col-md-6">
             <div class="outbox">
                 <h2 class="mb-3">발신함</h2>
-                <c:forEach items="${di}" var="message">
+                <c:forEach items="${di}" var="outmessage">
                     <div class="message">
-                        <h3>제목: ${message.subject}</h3>
-                        <p>보낸 사람(보낸 사람쪽에 로그인 한 아이디 저장 하기 되게 하기): ${message.sender}</p>
-                        <p>받는 사람: ${message.receiver}</p>
-                        <p>내용: ${message.content}</p>
+                        <h3>제목: ${outmessage.subject}</h3>
+                        <p>보낸 사람: ${outmessage.sender}</p>
+                        <p>받는 사람: ${outmessage.receiver}</p>
+                        <p>내용: ${outmessage.content}</p>
                         <p>
                             발신일:
                             <fmt:formatDate pattern="yyyy-MM-dd"
-                                value="${message.send_date}" />
+                                value="${outmessage.send_date}" />
                         </p>
                     </div>
                 </c:forEach>
@@ -85,6 +86,23 @@ body {
         </div>
     </div>
 </div>
+
+<!-- -------------------------------- 게시판 형태로 변환 하기 ---------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
