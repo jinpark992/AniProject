@@ -48,7 +48,7 @@ body {
         <!-- 수신함 -->
         <div class="col-md-6">
             <div class="inbox">
-                <h2 class="mb-3">수신함</h2>
+                <h2 class="mb-3">수신함</h2>  <!-- 구현중.. -->
                 <c:forEach items="" var="inboxMessage">
                     <div class="message">
                         <h3>제목: ${inboxMessage.subject}</h3>

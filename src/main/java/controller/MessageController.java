@@ -65,19 +65,14 @@ public class MessageController {
 	}
 	
 	/*
-	 * @RequestMapping("messageSendForm") public String message() { List<String> li
-	 * = new ArrayList<>();
-	 *  li.add(nicname); 
-	 *  m.addobject("li", li)
+	 * @RequestMapping("/messageReceptionForm") // 메세지 수신함(messageReception) public
+	 * String messageReception (Model model) {
 	 * 
 	 * 
-	 * return "message/messageSendForm"; }
+	 * return "message/messageReceptionForm"; }
 	 */
 	
-	
-	
-	
-	
+
 	@PostMapping("messageSend")      // 쪽지함(쪽지보내기)
 	public String messageSend(Message meg) {  // Message.java Model(getter,setter) 이용
        bd.messageSend(meg);

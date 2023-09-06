@@ -20,7 +20,7 @@
 	<insert id="insertComment" parameterType="map">   
 		insert into	
 		comment2 values
-		(board2comseq.nextval,#{num},#{comment},sysdate)
+		(board2comseq.nextval,#{num},#{comment},sysdate,#{nicname})
 	</insert>
 	
 	

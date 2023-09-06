@@ -95,13 +95,13 @@
             <div class="mb-3">
                 <label class="form-label">가격</label>
                 <div class="input-group">
-                    <input class="form-control" type="text" name="price" placeholder="원">
+                    <input class="form-control" type="text" name="price" value="${board2.price}" placeholder="원">
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">배송비</label>
                 <div class="input-group">
-                    <input class="form-control" type="text" name="shipping" placeholder="원">
+                    <input class="form-control" type="text" name="shipping" value="${board2.shipping}" placeholder="원">
                 </div>
             </div>
             <div class="mb-3">

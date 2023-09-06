@@ -26,10 +26,11 @@ public class Board2Mybatis {
 		return sqlSession.insert(NS + "insertBoard", board);
 	}
 
-	public int insertComment(String comment, int num) { // 2개 이상의 값을 표현할때는 map을사용해야함
+	public int insertComment(String comment, int num,String nicname) { // 2개 이상의 값을 표현할때는 map을사용해야함
 		Map map = new HashMap();
 		map.put("comment", comment);
 		map.put("num", num);
+		map.put("nicname", nicname);
 		return sqlSession.insert(NS + "insertComment", map);
 
 	}

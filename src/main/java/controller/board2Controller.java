@@ -185,15 +185,17 @@ public class board2Controller  {
 	    // @RequestParam("num") int boardNum: "num"이라는 이름의 파라미터로 전달된 게시물 번호를 받습니다.
 
 	    String comment = request.getParameter("comment"); // AJAX로 전달된 댓글 내용을 가져옵니다.
-
-	    int num = bd.insertComment(comment, boardNum); // 댓글을 추가하고 결과를 받아옵니다. (댓글 등록)
+        String nicname = (String)request.getSession().getAttribute("nicname");
+	    int num = bd.insertComment(comment, boardNum, nicname); // 댓글을 추가하고 결과를 받아옵니다. (댓글 등록)
 
 	    if (num == 0) {
 	        comment = "저장되지 않았습니다";
 	    }
+	    
 
 	    Comment2 c = new Comment2();
 	    c.setContent(comment);
+	    c.setNicname(nicname);
 	    c.setRegdate(new Date());
 
 	    m.addAttribute("c", c);
