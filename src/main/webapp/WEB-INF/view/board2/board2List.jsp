@@ -172,6 +172,7 @@ a {
 				</c:forEach>
 			</tbody>
 		</table>
+		
 		<div class="search-bar">
 			<form action="${pageContext.request.contextPath}/board2/board2List"
 				method="get" class="d-flex">

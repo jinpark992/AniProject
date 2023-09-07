@@ -176,6 +176,10 @@
 		SELECT * from messagesend where receiver = #{value}
 	</select> 
 	
+	 <!-- 메세지 삭제 -->
+	 <delete id="deleteMessage" parameterType="int">
+	    delete from messagesend where ser = #{ser}
+	</delete>
 	
 	
 	

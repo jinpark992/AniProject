@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,6 +74,17 @@ public class MessageController {
 		bd.messageSend(meg);
 
 		return "redirect:/message/messageSendForm";
+	}
+	
+	
+	@GetMapping("deleteMessage") // 메세지 삭제
+	public String deleteMessage(@RequestParam("ser") int ser, Model m) {
+	    // bd.deleteMessage()은 메시지를 삭제하는 Board2Mybatis 서비스의 메소드입니다.
+		System.out.println(ser);
+	    bd.deleteMessage(ser);
+
+	    // 메시지 페이지로 리다이렉트
+	    return "redirect:/message/messageReceptionForm";
 	}
 
 }

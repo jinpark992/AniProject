@@ -193,6 +193,11 @@ public class Board2Mybatis {
 
 	}
 	
+	public int deleteMessage(int ser) {
+		return sqlSession.delete(NS + "deleteMessage", ser);
+
+	}
+	
 	
 	
 	

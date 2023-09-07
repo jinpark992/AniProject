@@ -309,9 +309,9 @@ body {
 						onkeyup="enterkey('${board2.num}')" cols="50" id="comment"></textarea>
 				</td>
 				<td>
-					<!-- 총 댓글 수 표시 --> <span id="totalCommentCount">총 댓글(${commentLi.size()})</span> <!-- 댓글 입력 버튼 --> <input
-					type="button" value="입력(enter 입력)"
-					onclick="commentPro('${board2.num}')"
+					<!-- 총 댓글 수 표시 --> <span id="totalCommentCount">총
+						댓글(${commentLi.size()})</span> <!-- 댓글 입력 버튼 --> <input type="button"
+					value="입력(enter 입력)" onclick="commentPro('${board2.num}')"
 					class="btn btn-primary comment-button" />
 				</td>
 			</tr>
