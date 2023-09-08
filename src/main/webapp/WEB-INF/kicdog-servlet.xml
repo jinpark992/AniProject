@@ -11,53 +11,45 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<mvc:annotation-driven />
-<!-- 	
-Spring MVC 컴포넌트들을 디폴트 설정을 통해 활성화한다.
-Spring MVC @Controller에 요청을 보내기 위해 필요한 
-HandlerMapping과 HandlerAdapter를 Bean으로 등록한다.
+	<!-- Spring MVC 컴포넌트들을 디폴트 설정을 통해 활성화한다. Spring MVC @Controller에 요청을 보내기 
+		위해 필요한 HandlerMapping과 HandlerAdapter를 Bean으로 등록한다. HandlerMapping : HTTP 
+		요청정보를 이용해서 컨트롤러를 찾아주는 기능 HandlerAdapter : HandlerMapping을 통해 찾은 컨트롤러를 직접 
+		실행하는 기능을 수행 Bean을 생성하기 위해 xml 파일에 context:component-scan을 명시하면 이 태그를 포함하지 
+		않아도 MVC 어플리케이션을 작동한다. -->
+	<!-- css,js,html 웹에서 제공되는 파일의 기본 기능 제외 -->
+	<mvc:default-servlet-handler />
 
-HandlerMapping : HTTP 요청정보를 이용해서 컨트롤러를 찾아주는 기능
-HandlerAdapter : HandlerMapping을 통해 찾은 컨트롤러를 직접 실행하는 기능을 수행
-Bean을 생성하기 위해 xml 파일에 
-context:component-scan을 명시하면 이 태그를 포함하지 않아도 MVC 어플리케이션을 작동한다.
-	 -->
-	 <!-- css,js,html 웹에서 제공되는 파일의 기본 기능 제외 -->
-	<mvc:default-servlet-handler />  
-	
 	<context:component-scan
 		base-package="controller, service" />
-<!-- 		
-특정 패키지 내의 클래스를 스캔하고 Annotation
-(@Component @Controller @Service @Repository)을 확인한 후 Bean 인스턴스로 생성한다.
-이를 이용하면 @Autowired와 @Qualifier Annotation을 인식할 수 있다.
-context:component-scan을 선언했다면 
-context:annotation-config를 선언할 필요가 없다.	 -->			
-	<context:annotation-config /> 
-<!-- 	
-ApplicationContext 안에 이미 등록된 Bean들의 Annotation을 활성화하기 위해 사용된다.
-Component-scan과의 차이점은 이 설정은 Bean을 등록하는 작업을 수행하지 않는다는 것이다.	
-	 -->
+	<!-- 특정 패키지 내의 클래스를 스캔하고 Annotation (@Component @Controller @Service @Repository)을 
+		확인한 후 Bean 인스턴스로 생성한다. 이를 이용하면 @Autowired와 @Qualifier Annotation을 인식할 수 있다. 
+		context:component-scan을 선언했다면 context:annotation-config를 선언할 필요가 없다. -->
+	<context:annotation-config />
+	<!-- ApplicationContext 안에 이미 등록된 Bean들의 Annotation을 활성화하기 위해 사용된다. Component-scan과의 
+		차이점은 이 설정은 Bean을 등록하는 작업을 수행하지 않는다는 것이다. -->
 
 	<mvc:view-controller path="/index"
 		view-name="index" />
-		
-   <mvc:resources mapping="/view/board2/images/**" 
-          location="/WEB-INF/view/board2/images/" /> 
-    
-    <mvc:resources mapping="/view/member/picture/**" 
-          location="/WEB-INF/view/member/picture/" /> 
-  
-  <!--   
-    mapping은 url=project명/view/board/images/aaa.png가 들어오면 
-    location에 있는 파일을 연결하라는 의미임     -->        
+
+	<mvc:resources mapping="/view/board2/images/**"
+		location="/WEB-INF/view/board2/images/" />
+
+	<mvc:resources mapping="/view/board1/images/**"
+		location="/WEB-INF/view/board1/images/" />
+
+	<mvc:resources mapping="/view/member/picture/**"
+		location="/WEB-INF/view/member/picture/" />
+
+	<!-- mapping은 url=project명/view/board/images/aaa.png가 들어오면 location에 있는 
+		파일을 연결하라는 의미임 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
-	
- <bean id="dataSource"
+
+
+	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass">
@@ -85,11 +77,11 @@ Component-scan과의 차이점은 이 설정은 Bean을 등록하는 작업을 �
 			<value>5</value>
 		</property> <!-- 연결 객체 증가 갯수 -->
 	</bean>
-	 <!-- database pool 임-->
+	<!-- database pool 임 -->
 
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" /> 
+		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
 			value="classpath:mybatis/mybatis-config.xml" />
 		<!-- <property name="mapperLocations" value="classpath:mapper/*.xml"></property> -->
@@ -97,14 +89,14 @@ Component-scan과의 차이점은 이 설정은 Bean을 등록하는 작업을 �
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-	
+
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/member/memberList" />
 			<bean class="login.LoginAdmin" />
 		</mvc:interceptor>
-		
-		
+
+
 		<mvc:interceptor>  <!-- 1. 이쪽에 URL 이 존재하면 -->
 			<mvc:mapping path="/member/memberInfo" />
 			<mvc:mapping path="/member/memberUpdateForm" />
@@ -113,25 +105,21 @@ Component-scan과의 차이점은 이 설정은 Bean을 등록하는 작업을 �
 			<mvc:mapping path="/member/memberPassPro" />
 			<mvc:mapping path="/member/memberDeleteForm" />
 			<mvc:mapping path="/member/memberDeletePro" />
-			<mvc:mapping path="/board2/**" /> 
- 			<mvc:mapping path="/message/**" />	
+			<mvc:mapping path="/board1/**" />
+			<mvc:mapping path="/board2/**" />
+			<mvc:mapping path="/message/**" />
 			<ref bean="login" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 	<bean id="login" class="login.LoginUser" />  <!-- 2. login으로 넘어가게 설정 이것이 aop 방식 -->
-	
-   <bean id="multipartResolver"
+
+	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8" />
-	</bean> 
-	
-	<!-- 
-	upload를 위한 객체임 pom.xml에 
-	commons-fileupload
-	commons-beanutils
-	commons-digester
-	아래 내용을 추가 하여야함 
- -->
-	
+	</bean>
+
+	<!-- upload를 위한 객체임 pom.xml에 commons-fileupload commons-beanutils commons-digester 
+		아래 내용을 추가 하여야함 -->
+
 
 </beans>

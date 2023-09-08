@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.board1">
+ 
+ 
+ 	<!-- 매퍼  -->  
+  
+  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!게시물 관련 쿼리!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+    <!-- 게시판 텍스트 입력 -->
+	<insert id="insertBoard" parameterType="board1">
+		 insert into
+		 board1 values
+		(board1seq.nextval,#{boardid},#{name},#{pass},#{subject},#{content},#{file1},sysdate,0,board1seq.currval,0,0, #{location},#{recommendation},0,#{price},#{shipping})
+	<!-- board1seq.nextval은 Oracle 데이터베이스에서 사용되는 시퀀스(sequence) 개념을 나타내는 것입니다. 시퀀스는 데이터베이스 내에서 고유한 순번을 생성하는 데 사용되는 객체로, 주로 고유한 식별자를 생성하는 데 활용됩니다. -->
+	</insert>
+
+   <!-- 댓글 텍스트 입력(닉네임 insert 부분 추가해야함) -->
+	<insert id="insertComment" parameterType="map">   
+		insert into	
+		comment1 values
+		(board1comseq.nextval,#{num},#{comment},sysdate,#{nicname})
+	</insert>
+	
+	
+	<!-- 댓글 조회수 업데이트 -->
+	<update id="updateReadcnt"   parameterType="int">
+	update board1 set readcnt = readcnt+1   where num = #{num}
+	</update>
+	
+
+		<!-- 게시물 수 조회 쿼리 -->
+	<select id="boardCount" parameterType="string" resultType="int">
+	    select nvl(count(*), 0) from board1 where boardid = #{boardid} ${column}
+	</select>
+	
+	<!-- 게시물 목록 조회 쿼리 -->
+	<select id="boardList" parameterType="map" resultType="board1">
+	    select * from (
+	        select rownum rnum, a.*, (select nvl(count(*), 0) from comment1 where num = a.num) totalcount
+	        from (
+	            select * from board1 where boardid = #{boardid} ${column}
+	            order by num desc
+	        ) a
+	    ) where rnum BETWEEN #{start} and #{end}
+	</select>
+	
+	<!-- 게시물 검색 조회 쿼리 -->
+	<select id="board1search" parameterType="map" resultType="board1">
+	    select *
+	    from (
+	        select rownum rnum, a.*, (select nvl(count(*), 0) from comment1 where num = a.num) totalcount
+	        from (
+	            select * from board1 where boardid = #{boardid} ${keyword}
+	            order by num desc
+	        ) a
+	    ) where rnum BETWEEN #{start} and #{end}
+	</select>
+	
+	<!-- 게시물 검색 결과 수 조회 쿼리 -->
+	<select id="boardCountsearch" parameterType="string" resultType="int">
+	    select nvl(count(*), 0) from board1 where boardid = #{boardid} ${keyword}
+	</select>
+	
+	<!-- 댓글 목록 조회 쿼리 -->
+	<select id="commentList" parameterType="int" resultType="comment1">
+	    select * from comment1 where num = #{num} order by regdate desc
+	</select>
+<!-- 	order by regdate desc: 결과를 regdate 열을 기준으로 내림차순으로 정렬합니다. 이는 댓글을 최신순으로 정렬하는 것을 의미함.-->	
+	
+	<!-- 특정 게시물 조회 쿼리 -->
+	<select id="boardOne" parameterType="int" resultType="board1">
+	    select * from board1 where num = #{num}
+	</select>
+	
+	<!-- 특정 댓글 조회 쿼리 -->
+	<select id="commentOne" parameterType="int" resultType="comment1">
+	    select * from comment1 where ser = #{ser}
+	</select>
+	
+	<!-- 게시물 수정 쿼리 -->
+	<update id="boardUpdate" parameterType="board1">
+	    update board1 set
+	    location = #{location}, recommendation = #{recommendation},
+	    price = #{price}, shipping = #{shipping},
+	    subject = #{subject}, content = #{content}
+	    where num = #{num}
+	</update>
+	
+	<!-- 게시물 삭제 쿼리 -->
+	<delete id="boardDelete" parameterType="int">
+	    delete from board1 where num = #{num}
+	</delete>
+	
+	<!-- 댓글 삭제 쿼리 -->
+	<delete id="commentDelete" parameterType="int">
+	    delete from comment1 where ser = #{ser}
+	</delete>
+	
+	<!-- 댓글 수정 쿼리 -->
+	<update id="CommentEdit" parameterType="map">
+	    update comment1 set content = #{content} where ser = #{ser}
+	</update>
+	
+	 <!-- 게시물의 조회수 증가 쿼리 -->
+    <update id="increaseReadCount" parameterType="int">
+        UPDATE board
+        SET readcnt = readcnt + 1
+        WHERE num = #{num}
+    </update>
+    
+    
+  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!좋아요 기능 쿼리 추가!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+     
+    <!-- 좋아요 추가 -->
+	<insert id="LikeInsert" parameterType="map">
+	   	insert into	
+	   	liketable2 values
+		(#{boardnum},#{nicname},0)
+	</insert>
+    
+	<!-- 좋아요 조회 -->
+	<select id="getLikeCount" parameterType="map" resultType="int">
+	    select nvl(count(*),0) from liketable2
+	    where boardnum = #{boardnum} and nicname = #{nicname} and mod(likecount,2)=0
+	</select>
+	
+	<select id="getLike" parameterType="map" resultType="int">
+	    select nvl(count(*),0) from liketable2
+	    where boardnum = #{boardnum} and nicname = #{nicname}
+	</select>
+	
+	<!-- 좋아요 업데이트 -->
+	<update id="LikeUpdate" parameterType="map">
+	    update liketable2
+	    set likecount = likecount + 1
+	    where boardnum = #{boardnum} AND nicname = #{nicname}
+	</update>	
+	
+	<!-- 좋아요 업데이트 -->
+	<select id="CommentCount" parameterType="int">
+	  select nvl(count(*),0) from comment1  <!-- null 일 경우 0 넣어라 -->
+	  where num = #{num}
+
+	</select>
+   
+	
+
+    
+    
+    
+
+
+
+
+
+</mapper>

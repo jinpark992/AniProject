@@ -160,7 +160,7 @@ body {
 	//댓글 작성 및 전송을 처리하는 함수
 	function commentPro(num) {
 		// 입력한 댓글 내용 가져오기
-		let comment = document.querySelector("#comment").value;
+		let comment = document.querySelector("#comment").value;  // 밑에 댓글입력 id=comment값 가져옴
 		console.log(comment);
 
 		// 서버로 댓글을 비동기적으로 전송 (AJAX 요청)

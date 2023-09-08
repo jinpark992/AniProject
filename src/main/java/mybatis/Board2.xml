@@ -67,6 +67,7 @@
 	<select id="commentList" parameterType="int" resultType="comment2">
 	    select * from comment2 where num = #{num} order by regdate desc
 	</select>
+<!-- 	order by regdate desc: 결과를 regdate 열을 기준으로 내림차순으로 정렬합니다. 이는 댓글을 최신순으로 정렬하는 것을 의미함.-->	
 	
 	<!-- 특정 게시물 조회 쿼리 -->
 	<select id="boardOne" parameterType="int" resultType="board2">

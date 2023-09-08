@@ -116,25 +116,23 @@ function deleteMessage(ser) {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
 						<th>제목</th>
 						<th>내용</th>
 						<th>보낸사람</th>
 						<th>받는사람</th>
-						<th>삭제기능</th>
+						<th>메세지삭제</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="inMessage" items="${re}">
 						<tr>
-							<td>${inMessage.ser}</td>
 							<td>${inMessage.subject}</td>
 							<td>${inMessage.content}</td>
 							<td>${inMessage.sender}</td>
 							<td>${inMessage.receiver}</td>
 							<td>
 								<button class="button-delete"
-									onclick="deleteMessage('${outmessage.ser}')">
+									onclick="deleteMessage('${inMessage.ser}')">
 									<i class="fas fa-trash"></i>
 								</button>
 							</td>
@@ -150,18 +148,16 @@ function deleteMessage(ser) {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
 						<th>제목</th>
 						<th>내용</th>
 						<th>보낸사람</th>
 						<th>받는사람</th>
-						<th>삭제기능</th>
+						<th>메세지삭제</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="outmessage" items="${di}">
 						<tr>
-							<td>${outmessage.ser}</td>
 							<td>${outmessage.subject}</td>
 							<td>${outmessage.content}</td>
 							<td>${outmessage.sender}</td>

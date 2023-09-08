@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Board2 {
+public class Board1 {
 
 	private int num;
 	private String boardid; // 게시물고유번호
@@ -22,14 +22,6 @@ public class Board2 {
 	private String price; // 가격
 	private String shipping; // 배송비
 	private int totalcount; // 총 조회수
-
-	public int getTotalcount() {
-		return totalcount;
-	}
-
-	public void setTotalcount(int totalcount) {
-		this.totalcount = totalcount;
-	}
 
 	public int getNum() {
 		return num;
@@ -167,13 +159,21 @@ public class Board2 {
 		this.shipping = shipping;
 	}
 
+	public int getTotalcount() {
+		return totalcount;
+	}
+
+	public void setTotalcount(int totalcount) {
+		this.totalcount = totalcount;
+	}
+
 	@Override
 	public String toString() {
-		return "Board2 [num=" + num + ", boardid=" + boardid + ", name=" + name + ", pass=" + pass + ", subject="
+		return "Board1 [num=" + num + ", boardid=" + boardid + ", name=" + name + ", pass=" + pass + ", subject="
 				+ subject + ", content=" + content + ", file1=" + file1 + ", regdate=" + regdate + ", readcnt="
 				+ readcnt + ", ref=" + ref + ", reflevel=" + reflevel + ", refstep=" + refstep + ", location="
 				+ location + ", recommendation=" + recommendation + ", like=" + like + ", price=" + price
-				+ ", shipping=" + shipping + "]";
+				+ ", shipping=" + shipping + ", totalcount=" + totalcount + "]";
 	}
 
 }

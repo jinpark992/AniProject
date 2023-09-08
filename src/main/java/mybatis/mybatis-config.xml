@@ -8,7 +8,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  MyBatis는 데이터베이스와 Java 객체 사이의 매핑을 처리하여 데이터베이스 조작을 더 편리하게 만드는 데 사용됩니다. -->
 		<typeAlias type="model.Member" alias="member"/>
 		<typeAlias type="model.Ani" alias="ani"/>
+		<typeAlias type="model.Board1" alias="board1"/>
 		<typeAlias type="model.Board2" alias="board2"/>
+		<typeAlias type="model.Comment1" alias="comment1"/>
 		<typeAlias type="model.Comment2" alias="comment2"/>
 		<typeAlias type="model.Message" alias="message"/>
 
@@ -30,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper class="mybatis.MemberAnno"/>
 		<mapper class="mybatis.AniAnno"/>
 		<mapper class="mybatis.mapAnno"/>
+		<mapper resource="mybatis/Board1.xml"/>
 		<mapper resource="mybatis/Board2.xml"/>
 	</mappers>
 </configuration>
