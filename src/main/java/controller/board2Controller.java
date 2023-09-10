@@ -1,3 +1,5 @@
+/*자유게시판 & 공유게시판 Controller*/
+ 
 package controller;
 
 import java.io.File;

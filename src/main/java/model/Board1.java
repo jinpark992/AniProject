@@ -17,10 +17,7 @@ public class Board1 {
 	private int reflevel; // 답변 게시물의 계층 구조와 순서
 	private int refstep; // 답변 게시물의 계층 구조와 순서
 	private String location; // 지역
-	private String recommendation; // 추천
 	private int like; // 좋아요
-	private String price; // 가격
-	private String shipping; // 배송비
 	private int totalcount; // 총 조회수
 
 	public int getNum() {
@@ -127,36 +124,12 @@ public class Board1 {
 		this.location = location;
 	}
 
-	public String getRecommendation() {
-		return recommendation;
-	}
-
-	public void setRecommendation(String recommendation) {
-		this.recommendation = recommendation;
-	}
-
 	public int getLike() {
 		return like;
 	}
 
 	public void setLike(int like) {
 		this.like = like;
-	}
-
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
-	}
-
-	public String getShipping() {
-		return shipping;
-	}
-
-	public void setShipping(String shipping) {
-		this.shipping = shipping;
 	}
 
 	public int getTotalcount() {
@@ -172,8 +145,13 @@ public class Board1 {
 		return "Board1 [num=" + num + ", boardid=" + boardid + ", name=" + name + ", pass=" + pass + ", subject="
 				+ subject + ", content=" + content + ", file1=" + file1 + ", regdate=" + regdate + ", readcnt="
 				+ readcnt + ", ref=" + ref + ", reflevel=" + reflevel + ", refstep=" + refstep + ", location="
-				+ location + ", recommendation=" + recommendation + ", like=" + like + ", price=" + price
-				+ ", shipping=" + shipping + ", totalcount=" + totalcount + "]";
+				+ location + ", like=" + like + ", totalcount=" + totalcount + ", getNum()=" + getNum()
+				+ ", getBoardid()=" + getBoardid() + ", getName()=" + getName() + ", getPass()=" + getPass()
+				+ ", getSubject()=" + getSubject() + ", getContent()=" + getContent() + ", getFile1()=" + getFile1()
+				+ ", getRegdate()=" + getRegdate() + ", getReadcnt()=" + getReadcnt() + ", getRef()=" + getRef()
+				+ ", getReflevel()=" + getReflevel() + ", getRefstep()=" + getRefstep() + ", getLocation()="
+				+ getLocation() + ", getLike()=" + getLike() + ", getTotalcount()=" + getTotalcount() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 }

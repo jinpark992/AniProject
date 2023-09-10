@@ -1,3 +1,5 @@
+/*친구  찾기 게시판 Controller */
+
 package controller;
 
 import java.io.File;
@@ -48,6 +50,12 @@ public class board1Controller {
 	@RequestMapping("board1Form")
 	public String board1Form() {
 		return "board1/board1Form";
+	}
+	
+	
+	@RequestMapping("board1Room")
+	public String board1Room() {
+		return "board1/board1Room";
 	}
 
 	@RequestMapping("board1Pro")

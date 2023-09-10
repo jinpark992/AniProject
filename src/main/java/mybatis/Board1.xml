@@ -12,7 +12,7 @@
 	<insert id="insertBoard" parameterType="board1">
 		 insert into
 		 board1 values
-		(board1seq.nextval,#{boardid},#{name},#{pass},#{subject},#{content},#{file1},sysdate,0,board1seq.currval,0,0, #{location},#{recommendation},0,#{price},#{shipping})
+		(board1seq.nextval,#{boardid},#{name},#{pass},#{subject},#{content},#{file1},sysdate,0,board1seq.currval,0,0, #{location},0)
 	<!-- board1seq.nextval은 Oracle 데이터베이스에서 사용되는 시퀀스(sequence) 개념을 나타내는 것입니다. 시퀀스는 데이터베이스 내에서 고유한 순번을 생성하는 데 사용되는 객체로, 주로 고유한 식별자를 생성하는 데 활용됩니다. -->
 	</insert>
 

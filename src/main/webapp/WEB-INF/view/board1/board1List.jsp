@@ -114,12 +114,23 @@ a {
 <body>
 
 	<div class="container">
-		<h3 class="board-heading">동네 친구 찾기:)</h3>
+		<div class="d-flex justify-content-between align-items-center"
+			style="background-color: #007bff; padding: 10px;">
+			<div class="d-flex justify-content-between align-items-center">
+				<h3 class="board-heading" style="color: #fff;">동네 친구 찾기:)</h3>
+				<span class="ml-auto">
+					<button
+						onclick="location.href='${pageContext.request.contextPath}/board1/board1Room'"
+						class="btn btn-primary">지도로 동네친구 찾기(방만들기)</button>
+					<button class="btn btn-primary">지도로 동네친구 찾기(참여하기)</button>
+				</span>
+			</div>
+		</div>
+		
 		<table>
 			<thead>
 				<tr>
 					<th>번호</th>
-					<th>추천</th>
 					<th>닉네임</th>
 					<th>제목</th>
 					<th>이미지</th>
@@ -133,7 +144,6 @@ a {
 					<%-- 이 부분은 ${list}에 저장된 게시물 목록을 순회하면서 각 게시물 정보를 ${b}라는 변수에 할당하며 반복하는 부분입니다. --%>
 					<tr>
 						<td>${boardNum}</td>
-						<td class="recommendation ${b.recommendation}">${b.recommendation}</td>
 						<td>${b.name}(<span class="location ${b.location}">${b.location}</span>)
 							<a class="send-message-button"
 							href="${pageContext.request.contextPath}/message/messageSendForm">
@@ -150,10 +160,6 @@ a {
 										<img
 											src="${pageContext.request.contextPath}/view/board1/images/${b.file1}"
 											width="150px" alt="Image">
-									</div>
-									<div>
-										<div>가격: ${b.price}원</div>
-										<div>배송비: ${b.shipping}원</div>
 									</div>
 								</div>
 							</c:if></td>
