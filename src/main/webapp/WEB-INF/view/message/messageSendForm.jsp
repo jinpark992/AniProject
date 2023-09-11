@@ -57,17 +57,19 @@ input[type="submit"]:hover {
 	background-color: #0056b3;
 }
 </style>
+
+
 </head>
 <body>
 	<div class="container">
 		<h2>쪽지 보내기</h2>
 		<form action="${pageContext.request.contextPath}/message/messageSend"
 			method="post">
-			<label for="sender">보내는 사람(닉네임)</label> 
-			<input type="text" id="sender" name="sender" value="${nicname}" readonly="readonly"><br>
+			<label for="sender">보내는 사람(닉네임)</label> <input type="text"
+				id="sender" name="sender" value="${nicname}" readonly="readonly"><br>
 			<!-- 로그인 한 id의 nicname(발신자) -->
-			<label for="receiver">받는 사람</label> 
-			<select id="receiver" name="receiver" required>
+			<label for="receiver">받는 사람</label> <select id="receiver"
+				name="receiver" required>
 				<c:forEach items="${li}" var="nic">
 					<!-- select box 만들기 -->
 					<c:if test="${nic ne nicname }">
@@ -79,6 +81,8 @@ input[type="submit"]:hover {
 				내용:</label>
 			<textarea id="message" name="content" rows="4" cols="50" required></textarea>
 			<br> <input type="submit" value="전송">
+
+
 		</form>
 	</div>
 </body>

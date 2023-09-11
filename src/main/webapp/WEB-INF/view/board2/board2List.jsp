@@ -114,7 +114,10 @@ a {
 <body>
 
 	<div class="container">
-		<h3 class="board-heading">자유 & 공유게시판</h3>
+		<div class="d-flex justify-content-between align-items-center"
+			style="background-color: #007bff; padding: 10px;">
+			<h3 class="board-heading" style="color: #fff; margin: 0;">자유&공유게시판</h3>
+		</div>
 		<table>
 			<thead>
 				<tr>
@@ -172,7 +175,7 @@ a {
 				</c:forEach>
 			</tbody>
 		</table>
-		
+
 		<div class="search-bar">
 			<form action="${pageContext.request.contextPath}/board2/board2List"
 				method="get" class="d-flex">

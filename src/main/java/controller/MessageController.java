@@ -50,6 +50,7 @@ public class MessageController {
 		List<String> li = bd.animember();
 		System.out.println(li);
 		m.addAttribute("li", li); // model.addAttribute() 메서드를 사용하여 데이터를 추가합니다.
+		
 
 		return "message/messageSendForm";
 	}

@@ -57,6 +57,9 @@ public class board1Controller {
 	public String board1Room() {
 		return "board1/board1Room";
 	}
+	
+
+
 
 	@RequestMapping("board1Pro")
 	public String boardPro(@RequestParam("f") MultipartFile multipartFile, Board1 board) {

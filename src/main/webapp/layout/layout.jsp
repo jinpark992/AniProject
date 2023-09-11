@@ -123,24 +123,26 @@ body {
 .navbar-brand img {
 	max-height: 50px; /* 로고 이미지의 최대 높이 설정 */
 }
+
 .btn {
-    background-color: #ff6347; /* 예시: 버튼 배경색 */
-    color: #ffffff; /* 버튼 글자 색상 */
-}	
-.card {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 예시: 카드 요소에 그림자 효과 추가 */
-}
-.card:hover {
-    transform: scale(1.05); /* 마우스 호버 시 크기 확대 */
-    transition: 0.5s ease-in-out; /* 애니메이션 지속 시간 */
+	background-color: #ff6347; /* 예시: 버튼 배경색 */
+	color: #ffffff; /* 버튼 글자 색상 */
 }
 
+.card {
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 예시: 카드 요소에 그림자 효과 추가 */
+}
+
+.card:hover {
+	transform: scale(1.05); /* 마우스 호버 시 크기 확대 */
+	transition: 0.5s ease-in-out; /* 애니메이션 지속 시간 */
+}
 </style>
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
 			<nav class="navbar navbar-light bg-light">
 				<div class="container-fluid">
 					<a class="navbar-brand"
@@ -181,8 +183,8 @@ body {
 					<li class="nav-item"><a
 						href="${pageContext.request.contextPath}/api/maps"
 						class="nav-link"
-						onmouseover="changeWord(this, ['지역 정보', 'Location information'])">Location
-							information</a></li>
+						onmouseover="changeWord(this, ['호텔&뷰티', 'Hotel&Beauty'])">Hotel&Beauty
+					</a></li>
 
 
 					<li class="nav-item"><a class="nav-link"

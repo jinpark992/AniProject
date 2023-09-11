@@ -228,7 +228,7 @@ body {
 			<tr>
 				<th>지역</th>
 				<td>${board1.location}</td>
-				<th>#</th>
+				<th>모임장소</th>
 				<td></td>
 
 			</tr>

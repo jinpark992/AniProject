@@ -121,8 +121,8 @@ a {
 				<span class="ml-auto">
 					<button
 						onclick="location.href='${pageContext.request.contextPath}/board1/board1Room'"
-						class="btn btn-primary">지도로 동네친구 찾기(방만들기)</button>
-					<button class="btn btn-primary">지도로 동네친구 찾기(참여하기)</button>
+						class="btn btn-primary">모임장소 검색하기</button>
+					
 				</span>
 			</div>
 		</div>

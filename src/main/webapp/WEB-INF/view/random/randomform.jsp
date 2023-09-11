@@ -9,6 +9,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
         }
 
         .con {
@@ -18,10 +19,15 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            text-align: center;
         }
 
         .roulette {
             overflow: hidden;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         .items1 {
@@ -50,10 +56,14 @@
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
         }
 
+        .item1:hover {
+            background-color: #f2f2f2;
+        }
+
         .spin-buttons {
-            margin-top: 20px;
             display: flex;
             gap: 10px;
+            margin-top: 10px;
         }
 
         .spin-button {
@@ -75,28 +85,19 @@
 
 <body>
  <div class="con">
+    <h1>우리 강아지 랜덤 선택 리스트!</h1>
     <div class="roulette">
         <div class="items1">
-        
-        <c:forEach var="str" items="${li}">        
-        <div class="item1">${str}</div>
-        </c:forEach>
-            
-           <!--  <div class="item1">터그놀기 100번</div>
-            <div class="item1">산책갔다 맛있는거 먹기</div>
-            <div class="item1">간식사주기</div>
-            <div class="item1">옷사주기</div>
-            <div class="item1">반려견놀이터가기</div> -->
+            <c:forEach var="str" items="${li}">        
+                <div class="item1">${str}</div>
+            </c:forEach>
         </div>
     </div> 
-    
-    
     <div class="spin-buttons">
         <button class="spin-button" onclick="toggleRoulette()">시작하기</button>
         <button class="spin-button" onclick="stopRoulette()">멈추기</button>
     </div>
 </div>
-
 
 <script>
     let spinning = false;

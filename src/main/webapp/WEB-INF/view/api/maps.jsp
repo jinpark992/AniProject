@@ -296,9 +296,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 			<div>
 				<label><input type="radio" name="shopCategory" value='1'>Hotel</label>
 				<label><input type="radio" name="shopCategory" value='2'>Beauty</label>
-				<label><input type="radio" name="shopCategory" value='3'>Hospital</label>
-				<label><input type="radio" name="shopCategory" value='4'>travel</label>
-				<label><input type="radio" name="shopCategory" value='5'>cafe</label>
+
 				
 			</div>
 			
@@ -309,22 +307,11 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 			<b>위치검색</b>
 			<article>
 				<select id="si">
-					<option value="서울">서울</option>
-					<option value="경기도">경기도</option>
-					<option value="경상도">경상도</option>
-					<option value="강원도">강원도</option>
-					<option value="충청도">충청도</option>
-					<option value="전라도">전라도</option>
-					<option value="제주도">제주도</option>
+					<option value="서울">서울</option>	
 				</select> <select id='gu'>
 					<option value="강남구">강남구</option>
 					<option value="관악구">관악구</option>
 					<option value="송파구">송파구</option>
-					<option value="서초구">서초구</option>
-					<option value="동작구">동작구</option>
-					<option value="강동구">강동구</option>
-					<option value="중구">중구</option>
-					<option value="종로구">종로구</option>
 				</select>
 				<button onclick="submitForm()" id="resultButton">
 					<span> 결과 확인하기 </span>
