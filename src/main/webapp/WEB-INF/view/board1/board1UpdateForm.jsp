@@ -92,18 +92,7 @@
                     <option value="여행지">여행지</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">가격</label>
-                <div class="input-group">
-                    <input class="form-control" type="text" name="price" value="${board1.price}" placeholder="원">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">배송비</label>
-                <div class="input-group">
-                    <input class="form-control" type="text" name="shipping" value="${board1.shipping}" placeholder="원">
-                </div>
-            </div>
+       
             <div class="mb-3">
                 <label class="form-label">작성자</label>
                 <input class="form-control" type="text" name="name" value="${nicname}" readonly="readonly">

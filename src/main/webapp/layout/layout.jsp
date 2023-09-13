@@ -241,12 +241,10 @@ body {
 						href="${pageContext.request.contextPath}/message/messageSendForm")">
 						<i class="fas fa-envelope"></i> 쪽지 보내기
 					</a>
-					<!-- 쪽지 보내기 구현 예정 -->
 					<a class="nav-link"
 						href="${pageContext.request.contextPath}/message/messageReceptionForm")">
 						<i class="fas fa-envelope"></i> 쪽지함
 					</a>
-					<!-- 쪽지 함 구현 예정 -->
 					<a class="nav-link"
 						href="${pageContext.request.contextPath}/member/login"> <i
 						class="fas fa-sign-in-alt"></i> 로그인
@@ -254,6 +252,11 @@ body {
 					<a class="nav-link"
 						href="${pageContext.request.contextPath}/member/custom_signup">
 						<i class="fas fa-user-plus"></i> 회원가입
+					</a>
+					
+					<a class="nav-link"
+						href="${pageContext.request.contextPath}/chat/chatForm">
+						<i class="fas fa-user-plus"></i> 챗봇(테스트)
 					</a>
 				</c:if>
 			</div>

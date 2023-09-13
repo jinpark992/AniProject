@@ -59,6 +59,8 @@ public class board2Controller {
 		return "board2/board2Form"; // return "board2/board2Form";: "board2/board2Form" 뷰를 반환합니다. 이 뷰는 게시물 작성 폼을
 									// 표시함!
 	}
+	
+
 
 	@RequestMapping("board2Pro") // 이미지 업로드 기능을 위한 RequestMapping!
 	public String boardPro(@RequestParam("f") MultipartFile multipartFile, Board2 board) {
