@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+
 
 public class Member {
 
@@ -8,7 +8,7 @@ public class Member {
    private String pass;
    private String nicname;
    private String birthday;
-   private Date rdate;
+   private String rdate;
    
    public String getEmail() {
       return email;
@@ -34,10 +34,10 @@ public class Member {
    public void setBirthday(String birthday) {
       this.birthday = birthday;
    }
-   public Date getRdate() {
+   public String getRdate() {
       return rdate;
    }
-   public void setRdate(Date rdate) {
+   public void setRdate(String rdate) {
       this.rdate = rdate;
    }
 @Override

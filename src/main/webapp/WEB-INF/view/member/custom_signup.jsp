@@ -29,7 +29,7 @@
       <input type="text" class="form-control" id="nicname" placeholder="닉네임을 입력하세요" name="nicname">
     </div>
     <div class="mb-3">
-      <label for="pwd">생년월일(19000101):</label>
+      <label for="pwd">생년월일(19900127):</label>
       <input type="text" class="form-control" id="brithday" placeholder="생년월일 8자리를 입력하세요" name="birthday">
     </div>
     

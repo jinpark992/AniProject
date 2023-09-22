@@ -137,6 +137,16 @@ body {
 	transform: scale(1.05); /* 마우스 호버 시 크기 확대 */
 	transition: 0.5s ease-in-out; /* 애니메이션 지속 시간 */
 }
+
+@media screen and (max-width: 767px) {
+	/* 모바일 화면 크기에 대한 스타일 */
+	nav.navbar {
+		padding: 1rem; /* 예시: 작은 패딩 값으로 조정 */
+	}
+	footer .container {
+		padding: 1rem; /* 예시: 작은 패딩 값으로 조정 */	
+	}
+}
 </style>
 
 </head>
@@ -253,10 +263,10 @@ body {
 						href="${pageContext.request.contextPath}/member/custom_signup">
 						<i class="fas fa-user-plus"></i> 회원가입
 					</a>
-					
+
 					<a class="nav-link"
-						href="${pageContext.request.contextPath}/chat/chatForm">
-						<i class="fas fa-user-plus"></i> 챗봇(테스트)
+						href="${pageContext.request.contextPath}/chat/chatForm"> <i
+						class="fas fa-user-plus"></i> 챗봇(테스트)
 					</a>
 				</c:if>
 			</div>
