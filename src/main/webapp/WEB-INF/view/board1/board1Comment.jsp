@@ -174,8 +174,7 @@ body {
 		let chk = confirm("댓글을 삭제하겠습니까?");
 
 		if (chk) {
-			$
-					.get(
+			$.get(
 							"${pageContext.request.contextPath}/board1/board1DeleteCommentPro?ser="
 									+ ser,
 							function(data, state) {
@@ -195,8 +194,7 @@ body {
 			let newContent = prompt("새로운 댓글 내용을 입력하세요:", contentText);
 
 			if (newContent !== null) {
-				$
-						.get(
+				$.get(
 								"${pageContext.request.contextPath}/board1/board1CommentEditPro?ser="
 										+ ser + "&content=" + newContent,
 								function(data, state) {

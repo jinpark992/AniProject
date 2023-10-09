@@ -147,9 +147,9 @@ body {
 </style>
 
 <script>
-	//JavaScript 코드 시작
+	// JavaScript 코드 시작
 
-	//엔터 키(키 코드 13)를 눌렀을 때 호출되는 함수
+	// 엔터 키(키 코드 13)를 눌렀을 때 호출되는 함수
 	function enterkey(num) {
 		if (window.event.keyCode == 13) {
 			// 엔터 키를 눌렀을 때 commentPro 함수 호출
@@ -157,10 +157,10 @@ body {
 		}
 	}
 
-	//댓글 작성 및 전송을 처리하는 함수
+	// 댓글 작성 및 전송을 처리하는 함수
 	function commentPro(num) {
 		// 입력한 댓글 내용 가져오기
-		let comment = document.querySelector("#comment").value;  // 밑에 댓글입력 id=comment값 가져옴
+		let comment = document.querySelector("#comment").value;
 		console.log(comment);
 
 		// 서버로 댓글을 비동기적으로 전송 (AJAX 요청)
@@ -179,29 +179,25 @@ body {
 		document.querySelector("#comment").value = '';
 	}
 
-	//댓글 삭제 기능을 수행하는 함수
+	// 댓글 삭제 기능을 수행하는 함수
 	function deleteComment(ser) {
-		// 사용자에게 댓글 삭제 여부를 묻는 확인 대화상자 표시
 		let chk = confirm("댓글을 삭제하겠습니까?");
 
 		if (chk) {
-			// 사용자가 확인하면 해당 댓글을 서버에서 삭제 (AJAX 요청)
-			$
-					.get(
+			$.get(
 							"${pageContext.request.contextPath}/board2/board2DeleteCommentPro?ser="
 									+ ser,
 							function(data, state) {
 								console.log("Data: " + data + "\nStatus: "
 										+ status);
 								if (data == "ok") {
-									// 삭제 후 페이지 새로고침
 									location.href = "${pageContext.request.contextPath}/board2/board2Comment?num=${board2.num}&boardNum=${boardNum}";
 								}
 							});
 		}
 	}
 
-	//댓글 수정 기능을 수행하는 함수
+	// 댓글 수정 기능을 수행하는 함수
 	function editComment(ser, contentText) {
 		// 사용자에게 댓글 수정 여부를 묻는 확인 대화상자 표시
 		let chk = confirm("댓글을 수정하시겠습니까?");
@@ -233,7 +229,7 @@ body {
 		}
 	}
 
-	//JavaScript 코드 종료
+	// JavaScript 코드 종료
 </script>
 
 

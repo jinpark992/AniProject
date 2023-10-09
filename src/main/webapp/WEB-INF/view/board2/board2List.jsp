@@ -90,8 +90,7 @@ a {
 
 		// $.get을 통해 AJAX 요청을 보냅니다.
 		$.get("${pageContext.request.contextPath}/board2/board2likeChk?num="
-				+ num, // jQuery의 AJAX 메서드 중 하나인 $.get을 사용하여 서버에 AJAX GET 요청을 보냅니다.
-		// ${pageContext.request.contextPath}/board2/board2likeChk?num="+num는 요청할 URL을 생성
+				+ num, // jQuery의 AJAX 메서드 중 하나인 $.get을 사용하여 서버에 AJAX GET 요청을 보냅니다.(URL 생성)
 		function(data, status) { //AJAX 요청이 성공적으로 완료되면 실행되는 함수입니다. 응답 데이터와 상태 정보를 받아옵니다.	
 			console.log("Data: " + data + "\nStatus: " + status);// 응답 데이터와 상태 정보를 콘솔에 출력합니다. 이 부분은 디버깅을 위해 사용.
 			let likebutton = document.querySelector("#like-button" + num); // like-button ID를 가진 HTML 요소를 찾아와 likebutton 변수에 할당합니다. 
@@ -192,39 +191,45 @@ a {
 					class="btn btn-primary ml-2">검색</button>
 			</form>
 		</div>
+
 		<div class="pagination">
 			<!-- 페이지 링크... -->
 		</div>
 		<a class="write-button"
 			href="${pageContext.request.contextPath}/board2/board2Form">글쓰기</a>
 	</div>
-
-
 	<div class="pagination">
+		<!-- 이전 페이지로 이동하는 링크를 만드는 조건문 -->
 		<c:if test="${start < bottomLine }">
 			<a href="#" class="active">[이전]</a>
 		</c:if>
+		<!-- start가 bottomLine보다 큰 경우, 이전 페이지로 이동하는 링크를 만듭니다. -->
 		<c:if test="${start > bottomLine }">
 			<a
 				href="${pageContext.request.contextPath}/board2/board2List?pageNum=${start-bottomLine}"
 				class="">[이전]</a>
 		</c:if>
 
+		<!-- start부터 end까지의 페이지 링크를 생성하는 루프 -->
 		<c:forEach var="p" begin="${start}" end="${end}">
+			<!-- 각 페이지에 대한 링크를 생성하며, 현재 페이지인 경우 gold 클래스를 적용합니다. -->
 			<a
 				href="${pageContext.request.contextPath}/board2/board2List?pageNum=${p}"
 				class="<c:if test="${pageInt==p}">gold</c:if>">${p}</a>
 		</c:forEach>
 
+		<!-- 다음 페이지로 이동하는 링크를 만드는 조건문 -->
 		<c:if test="${end >= maxPage }">
 			<a href="#" class="white">다음</a>
 		</c:if>
+		<!-- end가 maxPage보다 작은 경우, 다음 페이지로 이동하는 링크를 만듭니다. -->
 		<c:if test="${end <  maxPage }">
 			<a
 				href="${pageContext.request.contextPath}/board2/board2List?pageNum=${start+bottomLine}"
 				class="w3-button ">[다음]</a>
 		</c:if>
 	</div>
+
 
 </body>
 </html>
