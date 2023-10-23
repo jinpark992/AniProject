@@ -313,12 +313,13 @@ body {
 			</tr>
 			<tr>
 				<!-- 댓글 목록 출력 -->
-				<td colspan="3" class="comment-list" id="commentList"><c:forEach
+				<td colspan="3" class="comment-list" id="commentList">
+				<c:forEach
 						var="c" items="${commentLi}">
 						<div class="comment-item" id="comment_${c.ser}">
 							<p>${c.toHtml()}</p>
 						</div>
-					</c:forEach></td>
+				</c:forEach></td>
 				<td></td>
 			</tr>
 		</table>

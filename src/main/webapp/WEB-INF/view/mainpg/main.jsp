@@ -55,7 +55,7 @@
     <div class="row">
         <div class="col-md-4 col-sm-12">
             <div class="card mb-3">
-                <img src="${pageContext.request.contextPath}/images/coco1.jpg" class="card-img-top" alt="..." width="50">
+                <img src="https://postfiles.pstatic.net/MjAyMzEwMjNfMTAg/MDAxNjk4MDMwMTg5OTMw.18Hd9aOU85RUlis0I52IcVYygVdWLsFbGJ964RLCqY4g.MJ-zHqXL9LG6_VCGwGAmTYIB-Qp08ay58lfB5ugGrO8g.PNG.dacsar/image.png?type=w966" alt="..." width="50">
                 <div class="card-body">
                     <h5 class="card-title text-center">진수 운영진님의 반려동물 코코</h5>
                     <p class="card-text">상큼한 코코</p>
