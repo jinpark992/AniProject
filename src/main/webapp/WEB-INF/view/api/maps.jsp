@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0abe8b87a0cfb2b20b1b55e88c710c57&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2349b15c0bcd1245a81f906f1d107fe1&libraries=services"></script>
 <style>
 #menu_wrap {
 	position: absolute;
