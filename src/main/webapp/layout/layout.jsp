@@ -10,6 +10,10 @@
 <meta name="viewport" content="width=device-width">
 <title>Lovely Dog</title>
 
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+	rel="stylesheet">
+
 <link rel="icon" href="/images/강아지로고3.png" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -144,7 +148,7 @@ body {
 		padding: 1rem; /* 예시: 작은 패딩 값으로 조정 */
 	}
 	footer .container {
-		padding: 1rem; /* 예시: 작은 패딩 값으로 조정 */	
+		padding: 1rem; /* 예시: 작은 패딩 값으로 조정 */
 	}
 }
 </style>
@@ -240,10 +244,15 @@ body {
 						href="${pageContext.request.contextPath}/member/myinfo"> <i
 						class="fas fa-user"></i> 내 정보
 					</a>
+					<a class="nav-link"
+						href="${pageContext.request.contextPath}/chat/chatForm"> <i
+						class="fa-brands fa-rocketchat"></i></i> 챗봇(카카오 채널)
+					</a>
 					<span class="nav-info nav-link"> <!-- 추가: nav-link 클래스 추가 -->
 						<i class="fas fa-user" style="font-size: 1.2em;"></i> <!-- 스타일 추가: font-size -->
 						<strong>${nicname}</strong>님 로그인•ﻌ•
 					</span>
+
 				</c:if>
 
 				<c:if test="${email==null}">
@@ -266,7 +275,7 @@ body {
 
 					<a class="nav-link"
 						href="${pageContext.request.contextPath}/chat/chatForm"> <i
-						class="fas fa-user-plus"></i> 챗봇(테스트)
+						class="fa-brands fa-rocketchat"></i></i> 챗봇(카카오 채널)
 					</a>
 				</c:if>
 			</div>
@@ -284,7 +293,9 @@ body {
 				<div class="first-line pb-5 pt-5">
 					<h2>
 						<i class="fa-solid fa-dog"></i> Kicdog <i
-							class="fa-solid fa-heart"></i>
+							class="fa-solid fa-heart">	
+							 <img src="https://i.postimg.cc/cLSZMsky/qrcode.png"
+							alt="QR Code" width="100" height="100">
 					</h2>
 					<span class="social-icons"> <a href="#"><i
 							class="fa-brands fa-instagram"></i></i></a> <a href="#"><i
@@ -292,7 +303,7 @@ body {
 							class="fa-brands fa-twitter"></i></i></a>
 					</span>
 					<div>
-						<i class="fa-solid fa-phone">01082821004</i>
+						<i class="fa-solid fa-phone">01047731497</i>
 					</div>
 				</div>
 				<div class="row pb-5 pt-5 second-line ">

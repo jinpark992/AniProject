@@ -36,12 +36,9 @@ public class chatController  {
 		session = request.getSession();
 		
 	}
-	
 	@RequestMapping("chatForm")
 	public String randomform() {
-        
-	
-		return "chat/chatForm";
+	    return "redirect:https://pf.kakao.com/_rxjVuG";
 	}
 	
 

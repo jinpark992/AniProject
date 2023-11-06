@@ -241,8 +241,6 @@
 #currentLocation button:hover {
 	background-color: #218838;
 }
-
-
 </style>
 </head>
 <body>
@@ -421,8 +419,7 @@
 
 		// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 		function addMarker(position, idx, title) {
-			
-			
+
 			var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
 			imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
 			imgOptions = {
@@ -438,8 +435,6 @@
 
 			marker.setMap(map); // 지도 위에 마커를 표출합니다
 			markers.push(marker); // 배열에 생성된 마커를 추가합니다
-			
-			
 
 			return marker;
 		}

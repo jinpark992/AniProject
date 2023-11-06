@@ -10,6 +10,9 @@
 <title>박진수의 블로그</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script
+	src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
 
 <style>
 body {
@@ -103,13 +106,63 @@ a {
 a:hover {
 	text-decoration: underline; /* 호버 시에만 밑줄 표시 */
 }
+
 .post img {
-    margin-bottom: 50px;
+	margin-bottom: 50px;
+}
+
+.click {
+	color: red;
+}
+
+/* 모달 스타일 */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+	padding-top: 60px;
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
 }
 </style>
 <script src="script.js" defer></script>
 </head>
 <body>
+	<!-- 팝업을 위한 HTML -->
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>
+			<h1>웹페이지 이미지 로딩이 있을수도 있습니다! 잠시 기다려주시거나 새로고침 해주시면 감사하겠습니다!!!!!</h1>
+			</p>
+		</div>
+	</div>
 	<div class="container">
 		<nav class="sidebar">
 			<ul>
@@ -123,8 +176,8 @@ a:hover {
 					onclick="showSection('stack')"><i class="fas fa-laptop-code"></i>
 						기술 스택</a></li>
 				<li><a href="javascript:void(0);"
-					onclick="showSection('experience')"><i class="fas fa-briefcase"></i>
-						이력</a></li>
+					onclick="showSection('career')"><i class="fas fa-briefcase"></i>
+						커리어</a></li>
 				<li><a href="javascript:void(0);"
 					onclick="showSection('contact')"><i class="fas fa-envelope"></i>
 						연락하기</a></li>
@@ -133,94 +186,192 @@ a:hover {
 		</nav>
 		<main class="content">
 			<header>
-				<h1>도전적이고 진취적인 개발자 박진수를 소개합니다.</h1>
+				<h1>
+					<i class="fas fa-rocket"></i>도전적이고 진취적인 개발자 박진수를 소개합니다.
+				</h1>
 			</header>
 
+
 			<section id="about" class="section active">
-				<h2>자기소개</h2>
+				<h2>○ 자기소개</h2>
+				<img src="링크 또는 이미지 파일 경로" alt="프로필 사진" width="300">
+				<!-- 여기에 프로필 사진 추가 -->
 				<p>
 					안녕하세요! 항상 새로운 기술을 탐구하며 개발을 즐기는 개발자 박진수입니다.<br> 저는 기술 스택을 중요하게
 					생각하며, 동시에 커뮤니케이션 능력의 중요성을 인지하고 있습니다.<br> 풍부한 기술과 좋은 커뮤니케이션으로
 					함께 문제를 해결하는 것을 즐기며, 항상 개선하고자 노력합니다.<br> 아직 부족한 점이 많겠지만, 꾸준한
 					학습과 열정을 통해 회사와 팀의 성장에 기여할 것을 약속드립니다!
 				</p>
-				<img
-					src="https://lh3.google.com/u/0/d/1_E1yNE4qPuXUS7UuHJky8XshrNmhnXwL=w1365-h878-iv1"
-					alt="" width="1000">
+				<img src="https://i.postimg.cc/3WQMnsQY/About-me.png" alt=""
+					width="1000">
 
-
-
-				<h2>나를 소개하는 사이트를 소개합니다.</h2>
+				<h2>○ 나를 소개하는 사이트를 소개합니다.</h2>
 				<p>
-					<a href="https://github.com/jinpark992/AniProject"><i
-						class="fab fa-github"></i> 깃허브</a> <span>: 프로젝트 소스코드 소개</span>
+					<a href="https://github.com/jinpark992/AniProject" target="_blank"><i
+						class="fab fa-github"></i> 깃허브 <span class="click">[click
+							me!]</span></a> <span>: 프로젝트 소스코드 소개</span>
 				</p>
 				<p>
-					<a href="https://jinparkworld.tistory.com/  "><i
-						class="fab fa-tumblr"></i> 티스토리</a> <span>: 스터디 기록 소개(일부 비공개)</span>
+					<a href="https://jinparkworld.tistory.com/" target="_blank"><i
+						class="fab fa-tumblr"></i> 티스토리<span class="click">[click
+							me!]</a> <span>: 스터디 기록 소개(일부 비공개) </span></span>
 				</p>
 				<p>
-					<a href="https://instagram.com/jinpark1992?igshid=NzZlODBkYWE4Ng=="><i
-						class="fab fa-instagram"></i> 인스타그램</a>
+					<a href="https://instagram.com/jinpark1992?igshid=NzZlODBkYWE4Ng=="
+						target="_blank"><i class="fab fa-instagram"></i> <span
+						class="click">[click me!] </span>: 개인용 인스타그램</a>
 				</p>
-
 			</section>
 
 			<section id="project" class="section">
-				<h2>KicDog Website 프로젝트 소개</h2>
+				<h2>○ KicDog Website 프로젝트 소개</h2>
+				<span> <a
+					href="http://15.165.2.217:5500/KicdogSpring/main/main"
+					class="click"> <i class="fas fa-link"></i><strong>
+							프로젝트 연결 링크 Click 해주세요!</strong>
+				</a>
+				</span>
 				<div class="post">
-					<p>1.Project 진행 과정</p>
-					<img
-						src="https://lh3.google.com/u/0/d/1_DodET0wqR8r5vmhw_GjvhU0wUqt1GMf=w1920-h878-iv1"
+					<p>
+					<h1>1.Project 진행 과정</h1>
+					</p>
+					<img src="https://i.postimg.cc/pVJdpvzP/image.png"
 						alt="프토젝트 진행 과정을 소개합니다." width="1000">
 
 				</div>
 
 				<div class="post">
-					<p>2.주제선정 배경</p>
-					<img
-						src="https://lh3.google.com/u/0/d/1_K9XdHKfzA81vA0lcDarx59EXm7Di5f8=w1920-h878-iv1"
+					<p>
+					<h1>2.주제선정 배경</h1>
+					</p>
+					<img src="https://i.postimg.cc/T3LGqvLL/image.png"
 						alt="프토젝트 주제선정 배경." width="1000">
 
 				</div>
 
 				<div class="post">
-					<p>3.프로젝트 개요</p>
-					<img
-						src="https://lh3.google.com/u/0/d/1_KotkMQIFvNI005pLlFZl9HyyIioX75c=w1920-h878-iv1"
-						alt="프토젝트 개요." width="1000">
+					<p>
+					<h1>3.프로젝트 개요</h1>
+					</p>
+					<img src="https://i.postimg.cc/fLHgrk1w/image.png" alt="프토젝트 개요."
+						width="1000">
 				</div>
-				
+
 				<div class="post">
-					<p>4.spring 구성 소개</p>
-					<img
-						src="https://lh3.google.com/u/0/d/1_Np5e7IMIi7zi-3WxZstru6ePTZEzVDi=w1365-h878-iv1"
+					<p>
+					<h1>4.spring 구성 소개</h1>
+					</p>
+					<img src="https://i.postimg.cc/vZtRv88m/spring.png"
 						alt="spring 구성 소개." width="1000">
 				</div>
-				
+
 				<div class="post">
-					<p>5. 기능 구조</p>
-					<img
-						src="https://lh3.google.com/u/0/d/1_XZSOcHiP8K3oXzkS180noBHvTpy4bDO=w1920-h878-iv1"
-						alt="기능 구조1." width="1000">
+					<p>
+					<h1>5. 기능 구조</h1>
+					</p>
+					<img src="https://i.postimg.cc/SQBwFYJs/image.png" alt="기능 구조1."
+						width="1000">
 					<div>
-					<img
-						src="https://lh3.google.com/u/0/d/1_ZjvIDEhRb3g80NjBPrqufOa9JbXi_G1=w1365-h878-iv1"
-						alt="기능 구조2." width="1000">
-						</div>
+						<img src="https://i.postimg.cc/ydJr27Kc/2.png" alt="기능 구조2."
+							width="1000">
+					</div>
+				</div>
+
+				<div class="post">
+					<p>
+					<h1>6.ERD</h1>
+					</p>
+					<img src="https://i.postimg.cc/fT7qGHG2/ERD.png" alt="ERD 소개."
+						width="1000">
+				</div>
+
+				<div class="post">
+					<p>
+					<h1>7.기능 소개</h1>
+					</p>
+					<p>- Main 소개</p>
+					<img src="https://i.postimg.cc/C1YzQxk6/main.gif" alt="main 소개."
+						width="1000">
+					<p>- 레이아웃 : 레이아웃 부분은 Home, 게시판, 호텔&뷰티 추천, 랜덤플레이 게임 , 쪽지 보내기, 쪽지
+						함, 로그인 , 회원가입 기능을 배치 시켜 놓았습니다.</p>
+					<img src="https://i.postimg.cc/gJY2KBbC/layout.png"
+						alt="- 레이아웃 소개." width="1000">
+					<p>- 로그인 화면 : 기본적으로 회원을 관리 할 수 있는 DB를 준비하였고 내 정보 수정을 통해 나의 반려동물
+						정보를 입력하도록 구현 하였습니다.</p>
+					<img src="https://i.postimg.cc/y638yRMY/login.gif"
+						alt="- 로그인 화면 소개." width="1000">
+
+					<p>- 게시판 기능(자유&amp;공유게시판): 게시판은 자유&공유게시판 및 동네친구 찾기 게시판 2개를
+						구현하였습니다. 자유& 공유게시판은 기본적인 댓글 추가 ,글 수정, 글 삭제 기능을 구현하였고 정보,공유 취지에 맞게
+						공유할 수 있는 데이터들을 저장해서 표현 할 수 있도록 구현했습니다.</p>
+					<img src="https://i.postimg.cc/4xfGqHSc/board.gif"
+						alt="- 게시판 기능 소개." width="1000">
+
+					<p>- 동네 친구 찾기 기능 : 동네친구 게시판은 자유&공유게시판과 같은 게시판 컨셉입니다. 하지만 동네 친구
+						찾기 컨셉을 가짐으로써 kakaomap Api를 이용하여 동네 근처 맛집 검색 등을 이용 할수 있게 구현 해
+						놓았습니다. 추가적으로 장소를 검색하고 마커를 클릭하면 자동적으로 입력 될 수 있는 기능은 추후 구현 예정입니다</p>
+					<img src="https://i.postimg.cc/RFf2NvY9/Friend.gif"
+						alt="동네 친구 찾기 기능 소개." width="1000">
+					<p>- 메시지 수신/발신: 메시지 수신/발신기능은 기본적으로 받는 사람에 본인을 제외한 회원정보가 나타 날수
+						있도록 표현 하였습니다. 또한 수신,발신을 할 때 저장 될 수 있도록 쪽지함 을 구현하였습니다.</p>
+					<img src="https://i.postimg.cc/Hn9K9BHh/message.gif"
+						alt="메시지 수신/발신 소개." width="1000">
+					<p>- Map Api 를 활용한 호텔&뷰티 추천 : Kakao Api를 활용하여 DB안에 있는 추천목록들을 표시
+						할 수 있게 기능을 구현했습니다.</p>
+					<img src="https://i.postimg.cc/g2T7swFm/hotel-beauty.gif"
+						alt="map Api 소개." width="1000">
+					<p>- 랜덤 플레이 게임 기능: DB안에 list를 upload 시켜 놓고 JavaScript로 list가
+						작동하도록 구현했습니다.</p>
+					<img src="https://i.postimg.cc/J4hKF1Qn/random.gif"
+						alt="랜덤 플레이 게임 소개." width="1000">
+				</div>
+				<div class="post">
+					<p>
+					<h1>8.AWS 클라우드 서버를 이용한 프로젝트 배포</h1>
+					</p>
+					<img src="" alt="AWS 배포." width="1000">
+				</div>
+				
+					<div class="post">
+					<p>
+					<h1>9.SpringMvc -> SpringBoot 환경으로 전환</h1>
+					</p>
+					<img src="" alt="SpringBoot전환." width="1000">
 				</div>
 				
 
-				<!-- 다른 포스트들도 추가할 수 있습니다 -->
+
 			</section>
 
-			<footer id="contact" class="section">
-				<h2>연락하기</h2>
-				<p>Email: example@email.com</p>
-				<p>LinkedIn: [LinkedIn 프로필 링크]</p>
-			</footer>
+
+			<section id="stack" class="section active">
+				<h2>○ 기술 스택</h2>
+				<img
+					src="https://lh3.google.com/u/0/d/1aAxlFk9bH2KLiSAVfxfog0TIQpnsl93G=w1365-h878-iv1"
+					alt="기술 스택 소개" width="1000">
+			</section>
+
+
+			<section id="career" class="section active">
+				<h2>○ 커리어</h2>
+				<img
+					src="https://lh3.google.com/u/0/d/1aBHBykzitPAjWMNkYebLkkITUt8c7IQY=w1365-h878-iv1"
+					alt="커리어 소개" width="1000">
+			</section>
+
+
+			<section id="contact" class="section">
+				<h2>○ 연락 주시면 감사하겠습니다!</h2>
+				<p>
+					<i class="fas fa-envelope"></i> Email: wlstn127@kakao.com
+				</p>
+				<p>
+					<i class="fas fa-phone"></i> Num: 010-4773-1497
+				</p>
+			</section>
 		</main>
 	</div>
+
 
 	<script>
 		function showSection(sectionId) {
@@ -234,6 +385,27 @@ a:hover {
 			var selectedSection = document.getElementById(sectionId);
 			selectedSection.classList.add('active');
 		}
+		// 모달을 가져오는 함수
+		function getModal() {
+			return document.getElementById('myModal');
+		}
+
+		// 모달 열기
+		function openModal() {
+			getModal().style.display = "block";
+		}
+
+		// 모달 닫기
+		function closeModal() {
+			getModal().style.display = "none";
+		}
+
+		// 닫기 버튼 누를 때 모달 닫기
+		document.getElementsByClassName('close')[0].addEventListener('click',
+				closeModal);
+
+		// 페이지 로드 시 모달 열기 (원하는 타이밍에서 호출하세요)
+		openModal();
 	</script>
 </body>
 </html>
